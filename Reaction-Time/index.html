@@ -2,9 +2,10 @@
 
 <html>
     <head>
+        <link rel="stylesheet" href="../main.css">
         <link rel="stylesheet" href="./main.css">
 
-        <title>Miscellaneous HTML projects</title>
+        <title>Reaction Time Test</title>
 
         <link rel="icon" type="image/png" href="https://rujulnayak.com/logos/icon-black.png"/>
         <meta property="og:image" content="https://rujulnayak.com/logos/colour.png" />
@@ -14,22 +15,22 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Miscellaneous HTML projects">
+        <meta name="description" content="A minimalistic reaction time test in HTML and JS">
     </head>
 
-    <body>
-        <h1>Miscellaneous HTML projects</h1>
+    <body class="noselect">
 
-        <ul>
-            <li>
-                <a href="./Logic-Gates">Logic Gates</a> <br />
-                (every single logic gate constructed from only <code>NAND</code> gates)
-            </li>
-            <li>
-                <a href="./Reaction-Time/">Reaction Time Test</a> <br />
-                (test your reaction time online)
-            </li>
-        </ul>
+        <h1 id="heading">Reaction Time Test</h1>
+
+        <h4 id="scoreboard">&nbsp;</h1>
+
+        <h1 id="instructions">Tap to start.</h1>
+
+        <div id="bottom">
+            <sub>&copy; Rujul Nayak 2024</sub>
+        </div>
+
+        <script src="./main.js"></script>
 
     </body>
 </html>
