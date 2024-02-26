@@ -1,0 +1,22 @@
+div#bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+}
+
+textarea#inputbox {
+    width: calc(100% - 6px);
+    font-family: monospace;
+}
+
+p#colours {
+    font-family: monospace;
+}
+
+.green {
+    color: #3cb043;
+}
+
+.orange {
+    color: darkgoldenrod;
+}
