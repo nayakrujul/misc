@@ -7,10 +7,12 @@ div#bottom {
 textarea#inputbox {
     width: calc(100% - 6px);
     font-family: monospace;
+    font-size: 1em;
 }
 
 p#colours {
     font-family: monospace;
+    overflow-wrap: anywhere;
 }
 
 .green {
