@@ -12,17 +12,19 @@ function change() {
     let inp = only_numbers(input.value);
     input.value = inp;
     let code = "";
+    let corr = 0;
     for (i = 0; i < inp.length; i++) {
         let c = inp[i];
         let d = pi[i];
         if (c === d) {
             code += `<span class="green">${c}</span>`;
+            if (c !== ".") corr++;
         } else {
             code += `<span class="orange">${c}</span>`;
         }
     }
-    let len = inp.length;
-    out.innerHTML = "<i>" + len + " digit" + (len !== 1 ? "s" : "") + "</i>";
+    let len = inp.replaceAll(".", "").length;
+    out.innerHTML = "<i>" + len + " digit" + (len !== 1 ? "s" : "") + " (" + corr + " correct)</i>";
     col.innerHTML = code + "&nbsp;";
 }
 
