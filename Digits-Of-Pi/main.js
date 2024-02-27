@@ -1,6 +1,10 @@
 const input = document.getElementById("inputbox");
+const peek = document.getElementById("peekbtn");
 const col = document.getElementById("colours");
 const out = document.getElementById("output");
+const nc = document.getElementById("notice");
+
+let peeks = 0;
 
 function only_numbers(str) {
     return [...str.matchAll(/\d|\./g)].join("");
@@ -25,7 +29,16 @@ function change() {
     }
     let len = inp.replaceAll(".", "").length;
     out.innerHTML = "<i>" + len + " digit" + (len !== 1 ? "s" : "") + " (" + corr + " correct)</i>";
-    col.innerHTML = code + "&nbsp;";
+    col.innerHTML = code || "&nbsp;";
+}
+
+function peeked() {
+    input.disabled = true;
+    let len = input.value.length + peeks * 5;
+    col.innerHTML += `<i class="grey">` + pi.slice(len, len + 5) + `</i>`;
+    nc.innerHTML = "<br />Refresh to restart.";
+    peeks++;
 }
 
 input.addEventListener("input", change);
+peek.addEventListener("click", peeked);
