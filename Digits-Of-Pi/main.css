@@ -4,7 +4,7 @@ div#bottom {
     bottom: 5px;
 }
 
-input#inputbox {
+textarea#inputbox {
     width: calc(100% - 6px);
     font-family: monospace;
     font-size: 1em;
