@@ -13,6 +13,8 @@ textarea#inputbox {
 p#colours {
     font-family: monospace;
     overflow-wrap: anywhere;
+    font-size: 1em;
+    padding: 3px;
 }
 
 .green {
