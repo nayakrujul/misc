@@ -28,7 +28,7 @@ function change() {
         let d = pi[i];
         if (c === d) {
             code += `<span class="green">${c}</span>`;
-            if (c !== ".") corr++;
+            if (d !== ".") corr++;
         } else if (d !== undefined) {
             code += `<span class="orange">${c}</span>`;
         } else {
