@@ -56,3 +56,5 @@ input.addEventListener("input", change);
 peek.addEventListener("click", peeked);
 
 adjust_height();
+
+input.focus();
