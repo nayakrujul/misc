@@ -23,7 +23,10 @@ function adjust_height() {
 function change() {
     let inp = only_numbers(input.value);
     if (inp.startsWith(".")) {
-        inp = "0" + inp;
+        inp = "3" + inp;
+    }
+    if (inp[0] !== "3") {
+        inp = "3" + inp.slice(1);
     }
     if (inp.length >= 1 && inp[1] !== ".") {
         inp = insert(inp, 1, ".").join("");
