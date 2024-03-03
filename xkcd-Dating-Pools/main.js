@@ -4,7 +4,7 @@ const outmax = document.getElementById("outputmax");
 
 function change() {
     let n = input.value;
-    n = n < 1 ? 1 : n > 120 ? 120: n;
+    n = n < 0 ? 0 : n > 120 ? 120: n;
     input.value = n;
     if (n < 14) {
         outmin.innerHTML = outmax.innerHTML = "--";
