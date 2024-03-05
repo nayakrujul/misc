@@ -11,10 +11,13 @@ function delete_row(element) {
 
 function add_row() {
     let row = document.createElement("tr");
-    [...Array(3)].forEach(_ => {
+    [...Array(3).keys()].forEach(i => {
         let data = document.createElement("td");
         let inpt = document.createElement("input");
-        inpt.type = "text";
+        inpt.type = i ? "number" : "text";
+        if (i !== 0) {
+            inpt.min = 0;
+        }
         inpt.classList.add("input-box");
         inpt.addEventListener("input", calculate_score);
         data.appendChild(inpt);
@@ -32,20 +35,16 @@ function add_row() {
     row.firstChild.firstChild.focus();
 }
 
-function extract_number(str){
-    return [...str.matchAll(/\d+/g)].join("");
-}
-
 function calculate_score() {
     let a = 0; let b = 0;
     let rows = [...tbl.rows];
     rows.shift();
     rows.forEach(r => {
         let [_, mks, max, __] = [...r.children].map(x => x.firstChild);
-        if (m = extract_number(max.value)) {
-            let n = +extract_number(mks.value);
-            a += Math.min(+m, n); b += +m;
-        }
+        mks.value = mks.value ? Math.abs(mks.value) : "";
+        max.value = max.value ? Math.abs(max.value) : "";
+        a += Math.min(+mks.value, +max.value);
+        b += +max.value;
     });
     scr.innerHTML = a + "/" + b + " (" + (((a / b) || 0) * 100).toFixed(2) + "%)";
 }
