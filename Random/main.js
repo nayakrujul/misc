@@ -3,7 +3,11 @@ const input = document.getElementById("inp");
 const output = document.getElementById("out");
 const button = document.getElementById("btn");
 
+let generated = -1;
 let cheat_num = -1;
+let chance = 1.5;
+let max = -1;
+let id = -1;
 
 function randint(n) {
     return Math.floor(Math.random() * n) + 1;
@@ -41,15 +45,31 @@ function change() {
     [...Array(+input.value).keys()].forEach(i => child(i));
 }
 
+function roll() {
+    output.innerHTML = randint(max);
+    chance -= 0.05;
+    if (Math.random() >= chance) {
+        clearInterval(id);
+        chance = 1.5;
+        output.innerHTML = generated;
+        output.classList.add("red");
+        generated = -1;
+    }
+}
+
 function clicked() {
+    if (generated !== -1) {
+        return;
+    }
+    output.classList.remove("red");
+    max = input.value;
     if (cheat_num !== -1) {
         generated = cheat_num;
-        cheat_num = -1;
-        animate(sus);
     } else {
-        generated = randint(input.value);
+        generated = randint(max);
     }
-    output.innerHTML = generated;
+    roll();
+    id = setInterval(roll, 50);
 }
 
 function cheat(event) {
