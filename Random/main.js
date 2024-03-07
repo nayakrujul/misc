@@ -46,7 +46,8 @@ function change() {
 }
 
 function roll() {
-    output.innerHTML = randint(max);
+    while ((n = randint(max)) === +output.innerHTML) {}
+    output.innerHTML = n;
     chance -= 0.05;
     if (Math.random() >= chance) {
         clearInterval(id);
