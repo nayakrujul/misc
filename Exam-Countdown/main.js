@@ -12,7 +12,7 @@ function time_to(end) {
     let minutes = Math.floor(diff / 60) % 60;
     diff -= minutes * 60;
 
-    let seconds = Math.round(diff % 60);
+    let seconds = Math.floor(diff % 60);
 
     if (end < Date.now()) days = "-" + days;
 
