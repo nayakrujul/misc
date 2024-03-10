@@ -6,8 +6,10 @@ body {
 
 div#bottom {
     width: 100%;
-    position: absolute;
-    bottom: 5px;
+    position: fixed;
+    padding: 5px;
+    bottom: 0px;
+    background-color: white;
 }
 
 h1#instructions {
