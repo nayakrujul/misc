@@ -20,3 +20,12 @@ h1.countdown-timer span.text {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     vertical-align: text-top;
 }
+
+@media (max-width: 800px) {
+    h1.countdown-timer span.timer {
+        font-size: 2rem;
+    }
+    h1.countdown-timer span.text {
+        font-size: 1rem;
+    }
+}
