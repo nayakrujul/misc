@@ -28,7 +28,14 @@ function update() {
 
 arr.forEach((elem, index) => {
     let name = elem.getAttribute("name");
-    elem.innerHTML = `<span class="text">${name.replaceAll("-", " ")}:</span> &ensp; <span class="timer" id="timer${index}">&nbsp;</span>`;
+    let end = (new Date(
+        Date.parse(elem.getAttribute("countdown-to"))
+        )
+    ).toLocaleDateString("en-GB", {
+        weekday: "short", month: "short", day: "numeric", year: "numeric",
+        hourCycle: "h23", hour: "numeric", minute: "numeric"
+    });
+    elem.innerHTML = `<span class="text">${name.replaceAll("-", " ")} (${end.replaceAll(" ", "&nbsp;")}):</span> &ensp; <span class="timer" id="timer${index}">&nbsp;</span>`;
 });
 
 update();
