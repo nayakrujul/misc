@@ -3,6 +3,9 @@ const arr = [...document.querySelectorAll("h1.countdown-timer")];
 function time_to(end) {
     let diff = Math.abs(end - Date.now()) / 1000;
 
+    let after = end < Date.now();
+    if (after) diff++;
+
     let days = Math.floor(diff / 86400);
     diff -= days * 86400;
 
@@ -13,8 +16,7 @@ function time_to(end) {
     diff -= minutes * 60;
 
     let seconds = Math.floor(diff % 60);
-
-    if (end < Date.now()) days = "-" + days;
+    if (after) days = "-" + days;
 
     return [days, hours, minutes, seconds];
 }
