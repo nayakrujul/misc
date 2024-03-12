@@ -22,12 +22,19 @@ function time_to(end) {
 }
 
 function update() {
+    out = "";
     arr.forEach((elem, index) => {
         let span = document.getElementById("timer" + index);
         let end_time = Date.parse(elem.getAttribute("countdown-to"));
         let [d, ...r] = time_to(end_time);
         span.innerHTML = `${d}d&nbsp;${r.map(n => ("" + n).padStart(2, "0")).join(":")}`;
+        if (out === "" && ("" + d)[0] !== "-") out = +d + 1;
     });
+    if (out) {
+        if ((x = "Exam Countdown: " + out + " days left") !== document.title) document.title = x;
+    } else {
+        document.title = "Exam Countdown";
+    }
 }
 
 arr.forEach((elem, index) => {
