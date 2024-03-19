@@ -1,5 +1,8 @@
+const okc = document.getElementById("okcookie");
+const cks = document.getElementById("cookies");
 const tbl = document.getElementById("table");
 const scr = document.getElementById("score");
+const btn = document.getElementById("addq");
 
 function delete_row(element) {
     element.parentElement.parentElement.remove();
@@ -49,8 +52,26 @@ function calculate_score() {
     scr.innerHTML = a + "/" + b + " (" + (((a / b) || 0) * 100).toFixed(2) + "%)";
 }
 
+function remove_banner() {
+    cks.hidden = true;
+    document.cookie = "cookiesAllowed=1;domain=misc.rujulnayak.com";
+}
+
+function get_cookies() {
+    let str = document.cookie.split(";");
+    let d = {};
+    for (i = 0; i < str.length; i++) {
+        if (str[i] === "") continue;
+        let c = str[i].split("=");
+        d[c[0].trim()] = c[1].trim();
+    }
+    return d;
+}
+
 add_row();
 
-window.onbeforeunload = function() {
-    return "You have unsaved changes.";
-}
+btn.addEventListener("click", add_row);
+
+okc.addEventListener("click", remove_banner);
+
+if (get_cookies()["cookiesAllowed"]) remove_banner();
