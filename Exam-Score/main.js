@@ -12,7 +12,10 @@ function delete_row(element) {
     calculate_score();
 }
 
-function add_row() {
+function add_row(l=undefined) {
+    if (l === undefined) {
+        l = ["", "", ""]
+    }
     let row = document.createElement("tr");
     [...Array(3).keys()].forEach(i => {
         let data = document.createElement("td");
@@ -21,6 +24,7 @@ function add_row() {
         if (i !== 0) {
             inpt.min = 0;
         }
+        inpt.value = l[i];
         inpt.classList.add("input-box");
         inpt.addEventListener("input", calculate_score);
         data.appendChild(inpt);
@@ -50,6 +54,7 @@ function calculate_score() {
         b += +max.value;
     });
     scr.innerHTML = a + "/" + b + " (" + (((a / b) || 0) * 100).toFixed(2) + "%)";
+    save();
 }
 
 function remove_banner() {
@@ -68,10 +73,51 @@ function get_cookies() {
     return d;
 }
 
-add_row();
+function sanitise(string) {
+    return string.replaceAll("\\", "\\\\").replaceAll("||", "\\pipes").replaceAll(",", "\\comma");
+}
 
-btn.addEventListener("click", add_row);
+function desanitise(string) {
+    return string.replaceAll("\\\\", "\\").replaceAll("\\pipes", "||").replaceAll("\\comma", ",");
+}
+
+function save() {
+    let rows = [...tbl.rows];
+    rows.shift();
+    let output = [];
+    rows.forEach(r => {
+        let [nm, mks, max, _] = [...r.children].map(x => x.firstChild.value);
+        output.push([sanitise(nm), mks, max].join(","));
+    });
+    document.cookie = `data=${output.join("||")};domain=misc.rujulnayak.com`;
+    console.log(output.join("||"));
+}
+
+function load(string) {
+    let lst = string.split("||");
+    for (i = 0; i < lst.length; i++) {
+        console.log(lst[i]);
+        let [a, b, c] = lst[i].split(",");
+        add_row([desanitise(a), b, c]);
+    }
+    calculate_score();
+}
+
+btn.addEventListener("click", () => add_row());
 
 okc.addEventListener("click", remove_banner);
 
 if (get_cookies()["cookiesAllowed"]) remove_banner();
+
+if (data = get_cookies()["data"]) {
+    load(data);
+} else {
+    add_row();
+}
+
+document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        save();
+    }
+});
