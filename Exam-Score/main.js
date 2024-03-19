@@ -40,6 +40,7 @@ function add_row(l=undefined) {
     row.appendChild(dt);
     tbl.appendChild(row);
     row.firstChild.firstChild.focus();
+    save();
 }
 
 function calculate_score() {
@@ -90,7 +91,7 @@ function save() {
         output.push([sanitise(nm), mks, max].join(","));
     });
     document.cookie = `data=${output.join("||")};domain=misc.rujulnayak.com`;
-    console.log(output.join("||"));
+    console.log("AUTOSAVED:", output.join("||"));
 }
 
 function load(string) {
