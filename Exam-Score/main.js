@@ -74,21 +74,13 @@ function get_cookies() {
     return d;
 }
 
-function sanitise(string) {
-    return string.replaceAll("\\", "\\\\").replaceAll("||", "\\pipes").replaceAll(",", "\\comma");
-}
-
-function desanitise(string) {
-    return string.replaceAll("\\\\", "\\").replaceAll("\\pipes", "||").replaceAll("\\comma", ",");
-}
-
 function save() {
     let rows = [...tbl.rows];
     rows.shift();
     let output = [];
     rows.forEach(r => {
         let [nm, mks, max, _] = [...r.children].map(x => x.firstChild.value);
-        output.push([sanitise(nm), mks, max].join(","));
+        output.push([encodeURIComponent(nm), mks, max].join(","));
     });
     document.cookie = `examScoreData=${output.join("||")};domain=misc.rujulnayak.com;max-age=31536000`;
     console.log("AUTOSAVED:", output.join("||"));
@@ -99,7 +91,7 @@ function load(string) {
     for (i = 0; i < lst.length; i++) {
         console.log(lst[i]);
         let [a, b, c] = lst[i].split(",");
-        add_row([desanitise(a), b, c]);
+        add_row([decodeURIComponent(a), b, c]);
     }
     calculate_score();
 }
