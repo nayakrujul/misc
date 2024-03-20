@@ -60,7 +60,7 @@ function calculate_score() {
 
 function remove_banner() {
     cks.hidden = true;
-    document.cookie = "cookiesAllowed=1;domain=misc.rujulnayak.com";
+    document.cookie = "cookiesAllowed=1;domain=misc.rujulnayak.com;max-age=31536000";
 }
 
 function get_cookies() {
@@ -90,7 +90,7 @@ function save() {
         let [nm, mks, max, _] = [...r.children].map(x => x.firstChild.value);
         output.push([sanitise(nm), mks, max].join(","));
     });
-    document.cookie = `data=${output.join("||")};domain=misc.rujulnayak.com`;
+    document.cookie = `examScoreData=${output.join("||")};domain=misc.rujulnayak.com;max-age=31536000`;
     console.log("AUTOSAVED:", output.join("||"));
 }
 
@@ -110,8 +110,8 @@ okc.addEventListener("click", remove_banner);
 
 if (get_cookies()["cookiesAllowed"]) remove_banner();
 
-if (data = get_cookies()["data"]) {
-    load(data);
+if (esd = get_cookies()["examScoreData"]) {
+    load(esd);
 } else {
     add_row();
 }
