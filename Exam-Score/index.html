@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="stylesheet" href="./main.css">
+
+        <title>Exam Score</title>
+
+        <link rel="icon" type="image/png" href="https://rujulnayak.com/logos/icon-black.png"/>
+        <meta property="og:image" content="https://rujulnayak.com/logos/colour.png" />
+        <meta property="og:image:width" content="2000" />
+        <meta property="og:image:height" content="1500" />
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A page to make marking tests easier.">
+    </head>
+    <body>
+        <h1 id="heading">Exam Score</h1>
+        <br />
+        <label for="name">Exam name:</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Maths Paper 1" />
+        <br /> <br />
+        <h3 id="score">0/0 (0.00%)</h3>
+        <table id="table">
+            <tr>
+                <th>Question</th>
+                <th>Marks</th>
+                <th>Maximum</th>
+                <th>Del</th>
+            </tr>
+        </table>
+        <br /> <br />
+        <input type="button" id="addq" value="Add question" />
+        &nbsp;
+        <input type="button" id="clear" value="Clear all" />
+        &nbsp;
+        <input type="button" id="download" value="Download image" />
+        <br /> <br />
+        <p><i>Your changes are always autosaved on your browser.</i></p>
+        <div id="cookies">
+            <h2>Cookies on this page</h2>
+            <p>
+                We use cookies on this page (https://misc.rujulnayak.com/Exam-Score/) to automatically save your work.
+                We will not use cookies to store any of your personal data.
+            </p>
+            <input type="button" id="okcookie" value="Accept!" />
+        </div>
+        <canvas hidden id="canvas" width="1000px" height="1000px"></canvas>
+        <a hidden id="click" href="/"></a>
+        <br /> <br />
+        <div id="bottom">
+            <sub>&copy; Rujul Nayak 2024</sub>
+        </div>
+        <script src="./main.js"></script>
+    </body>
+</html>
