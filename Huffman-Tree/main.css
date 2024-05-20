@@ -1,0 +1,36 @@
+h1#heading {
+    padding-bottom: 10px;
+}
+
+div#bottom {
+    width: 100%;
+    position: fixed;
+    padding: 5px;
+    bottom: 0px;
+    background-color: white;
+}
+
+input#inputbox {
+    width: 500px;
+    max-width: calc(100% - 5px);
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+.char {
+    color: #e47d00;
+}
+
+.code {
+    color: lightseagreen;
+}
