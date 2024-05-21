@@ -40,7 +40,7 @@ function makeSortable(tbl) {
     heads.forEach((th, i) => {
         let img = document.createElement("img");
         img.src = "https://misc.rujulnayak.com/js/sort-table/assets/updown.svg";
-        img.style.height = "100%";
+        img.style.height = "1rem";
         img.style.cursor = "pointer";
         img.classList.add("st-image");
         img.setAttribute("st-index", i);
