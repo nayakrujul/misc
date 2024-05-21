@@ -9,12 +9,12 @@ function sortTable(event) {
     let index = image.getAttribute("st-index");
     let dir = image.getAttribute("st-dir");
     resetButtons(row);
-    if (dir === "down") {
-        image.src = "https://misc.rujulnayak.com/js/sort-table/assets/up.svg";
-        image.setAttribute("st-dir", "up");
-    } else {
+    if (dir === "up") {
         image.src = "https://misc.rujulnayak.com/js/sort-table/assets/down.svg";
         image.setAttribute("st-dir", "down");
+    } else {
+        image.src = "https://misc.rujulnayak.com/js/sort-table/assets/up.svg";
+        image.setAttribute("st-dir", "up");
     }
     let table = row.parentElement.parentElement;
     let rows = [...table.rows];
@@ -28,7 +28,7 @@ function sortTable(event) {
         if (x === y) return 0;
         return (x > y) ? 1 : -1;
     });
-    if (dir === "down") rows.reverse();
+    if (dir === "up") rows.reverse();
     old_rows.forEach((elem) => elem.remove());
     rows.forEach((elem) => table.appendChild(elem));
 }
