@@ -42,6 +42,7 @@ function makeSortable(tbl) {
         img.src = "https://misc.rujulnayak.com/js/sort-table/assets/updown.svg";
         img.style.height = "1rem";
         img.style.cursor = "pointer";
+        img.style.paddingLeft = "5px";
         img.classList.add("st-image");
         img.setAttribute("st-index", i);
         img.setAttribute("st-dir", "both");
