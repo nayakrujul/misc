@@ -2,7 +2,7 @@
 
 A small JS program to add sorting buttons to your table.
 
-## Usage
+## Quick Start
 
 Just add the script into your HTML file using:
 
@@ -12,7 +12,7 @@ Just add the script into your HTML file using:
 
 Then, choose either one of the following methods:
 
-#### HTML
+### HTML
 
 Just add the `sort-table` class.
 
@@ -24,7 +24,7 @@ Just add the `sort-table` class.
 
 The program will automatically pick it up.
 
-#### JS
+### JS
 
 Alternatively, call the `makeSortable` function from your JS file.
 
@@ -33,6 +33,25 @@ makeSortable(myTable);
 ```
 
 Note: your JS `<script>` tag must be underneath the `sort-table` `<script>` tag.
+
+## Other Functions
+
+### Numeric sorting
+
+The default sorting method is string comparison: if you need to sort a column based on numeric value,
+add the `st-num` class to the column's header:
+
+```html
+<th class="st-num">...</th>
+```
+
+### Reset buttons
+
+If you need to change all buttons in a table back to the starting image, use the following JS code:
+
+```javascript
+resetButtons(myTable);
+```
 
 ## License
 

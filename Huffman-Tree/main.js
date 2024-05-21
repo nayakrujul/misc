@@ -97,6 +97,7 @@ function generate_table(tree) {
         row.appendChild(td3);
         out3.appendChild(row);
     });
+    resetButtons(out3);
 }
 
 /**
