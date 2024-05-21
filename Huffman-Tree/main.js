@@ -119,5 +119,3 @@ function change() {
 
 inp.addEventListener("input", change);
 change();
-
-makeSortable(out3);
