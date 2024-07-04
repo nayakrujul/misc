@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="stylesheet" href="./main.css">
+
+        <title>Convert</title>
+
+        <link rel="icon" type="image/png" href="https://rujulnayak.com/logos/icon-black.png"/>
+        <meta property="og:image" content="https://rujulnayak.com/logos/colour.png" />
+        <meta property="og:image:width" content="2000" />
+        <meta property="og:image:height" content="1500" />
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Convert between different units.">
+    </head>
+
+    <body>
+
+        <h1 id="heading">Convert</h1>
+
+        <select id="unit-set">
+            <option value="length">Length</option>
+            <option value="mass">Mass</option>
+        </select>
+
+        <span>&nbsp;Available units:&nbsp;</span>
+        <span id="units-list"></span>
+        <span>(You may also use SI prefixes)</span>
+
+        <br /> <br />
+
+        <input id="from-box" placeholder="value and unit" value="5.67 mi" />
+        <span id="equals">&nbsp;=&nbsp;</span>
+        <span id="result"></span>
+        <span>&nbsp;</span>
+        <input id="to-box" placeholder="unit" value="m" />
+
+        <br /> <br /> <br /> <br />
+
+        <div id="bottom">&copy; Rujul Nayak 2024</div>
+
+        <script src="./main.js"></script>
+
+    </body>
+</html>
