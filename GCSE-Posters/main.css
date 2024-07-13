@@ -1,0 +1,41 @@
+div#bottom {
+    width: 100%;
+    position: fixed;
+    padding: 5px;
+    bottom: 0px;
+    background-color: white;
+}
+
+h2 {
+    margin-top: 50px;
+}
+
+img.poster {
+    object-fit: contain;
+    box-sizing: border-box;
+    height: 200px;
+    max-width: 100%;
+    cursor: zoom-in;
+}
+
+a {
+    display: block;
+    color: inherit;
+    border-radius: 10px;
+    border: 2px solid;
+    width: fit-content;
+    padding: 5px;
+    text-decoration: none;
+    font-style: normal;
+    background-color: #eeeeee;
+
+    * {
+        vertical-align: middle;
+    }
+
+    img.download {
+        content: url("./assets/download.svg");
+        height: 18px;
+        padding-right: 5px;
+    }
+}
