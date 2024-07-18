@@ -1,0 +1,23 @@
+div#bottom {
+    width: 100%;
+    position: fixed;
+    padding: 5px;
+    bottom: 0px;
+    background-color: white;
+}
+
+#output1, #output2, #output3, #output4 {
+    font-weight: bold;
+}
+
+#output2, #output5 {
+    color: blue;
+}
+
+#output3, #output6 {
+    color: green;
+}
+
+#output4, #output7 {
+    color: red;
+}
