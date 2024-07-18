@@ -1,0 +1,32 @@
+div#bottom {
+    width: 100%;
+    position: fixed;
+    padding: 5px;
+    bottom: 0px;
+    background-color: white;
+}
+
+h1.countdown-timer {
+    margin-top: min(10vh, 50px);
+    margin-bottom: min(10vh, 50px);
+}
+
+h1.countdown-timer span.timer {
+    font-family: monospace;
+    font-size: 3rem;
+}
+
+h1.countdown-timer span.text {
+    font-size: 1.5rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    vertical-align: text-top;
+}
+
+@media (max-width: 800px) {
+    h1.countdown-timer span.timer {
+        font-size: 2rem;
+    }
+    h1.countdown-timer span.text {
+        font-size: 1rem;
+    }
+}

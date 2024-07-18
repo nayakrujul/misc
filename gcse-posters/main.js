@@ -1,0 +1,1 @@
+[...document.querySelectorAll("img")].forEach(img => img.addEventListener("click", evt => window.open(evt.target.src, '_blank').focus()));
