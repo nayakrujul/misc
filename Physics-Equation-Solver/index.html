@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="stylesheet" href="./main.css">
+
+        <title>Physics Equation Solver</title>
+
+        <link rel="icon" type="image/png" href="https://rujulnayak.com/logos/icon-black.png"/>
+        <meta property="og:image" content="https://rujulnayak.com/logos/colour.png" />
+        <meta property="og:image:width" content="2000" />
+        <meta property="og:image:height" content="1500" />
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Solve Physics equation problems instantly.">
+    </head>
+    <body>
+        <h1 id="heading">Physics Equation Solver</h1>
+        <p><i>Note: this solver can only handle equations with three variables.</i></p>
+        <br />
+        <label>Variable 1: </label>
+        <input type="text" id="var1" placeholder="Variable 1" value="F" />
+        <span> = </span>
+        <input type="text" id="val1" placeholder="Value 1" value="12.34" />
+        <br />
+        <label>Variable 2: </label>
+        <input type="text" id="var2" placeholder="Variable 2" value="a" />
+        <span> = </span>
+        <input type="text" id="val2" placeholder="Value 2" value="2.5" />
+        <br /> <br />
+        <label>Find: </label>
+        <input type="text" id="find" placeholder="Variable to find" value="m" />
+        <span> = </span> <span id="ans">&nbsp;</span>
+        <br /> <br />
+        <label>Equation used: </label>
+        <span id="eqn">&nbsp;</span>
+        <br /> <br />
+        <div id="bottom">
+            <sub>&copy; Rujul Nayak 2024</sub>
+        </div>
+        <script src="./main.js"></script>
+    </body>
+</html>

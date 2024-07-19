@@ -1,0 +1,19 @@
+div#bottom {
+    width: 100%;
+    position: fixed;
+    padding: 5px;
+    bottom: 0px;
+    background-color: white;
+}
+
+#ans, #eqn {
+    color: red;
+}
+
+#var1, #var2, #find {
+    width: 50px;
+}
+
+#val1, #val2 {
+    width: 75px;
+}
