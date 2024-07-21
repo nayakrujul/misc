@@ -1,0 +1,32 @@
+:root {
+    scroll-behavior: smooth;
+}
+
+div#bottom {
+    width: 100%;
+    position: fixed;
+    padding: 5px;
+    bottom: 0px;
+    background-color: white;
+}
+
+table {
+    border: 1px solid;
+    td, th {
+        text-align: left;
+        border: 1px solid;
+        padding: 5px;
+    }
+    tr:hover {
+        background-color: lightblue;
+    }
+}
+
+h2 {
+    padding-top: 20px;
+    margin-bottom: 0px;
+}
+
+h1, h2 {
+    scroll-margin-top: 20px;
+}
