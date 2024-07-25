@@ -22,6 +22,12 @@ table {
     }
 }
 
+.wrapper{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
 h2 {
     padding-top: 20px;
     margin-bottom: 0px;
