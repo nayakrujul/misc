@@ -222,7 +222,7 @@ function calculate_totals() {
     });
     let fuel = sum(weights) * 70;
     document.getElementById("total-cost").innerHTML =
-        `Total cost: <i>£` + sum(costs) + ` (subtotal)</i> + <i>£` + fuel + `</i> (fuel) = <b class="` +
+        `Total cost: <i>£` + sum(costs) + `</i> (subtotal) + <i>£` + fuel + `</i> (fuel) = <b class="` +
         (sum(costs) + fuel > BUDGET ? 'red' : 'green') + `">£` + (sum(costs) + fuel) + `</b>`;
     let vols = sels.map(sel => {
         let val = sel.value;
