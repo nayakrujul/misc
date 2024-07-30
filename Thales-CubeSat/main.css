@@ -7,11 +7,15 @@ div#bottom {
 }
 
 div#stick {
+    width: 100%;
     position: fixed;
     top: 0px;
+    left: 0px;
     background-color: white;
     z-index: 1000;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    padding-left: 8px;
+    border-bottom: 3px solid black;
 }
 
 div#rest {
