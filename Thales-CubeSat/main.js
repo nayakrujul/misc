@@ -239,7 +239,7 @@ function calculate_totals() {
         let val = sel.value;
         let lab = sel.getAttribute("label");
         let dct = OPTIONS[lab][val];
-        return (dct["power"] || 0) * (dct["time"] || 1);
+        return (dct["power"] || 0) * (dct["time"] || OPTIONS["payload"][document.getElementById("select-1").value]["time"]);
     });
     document.getElementById("total-power").innerHTML =
         `Available power: <i>` + energy + `Wh</i> - <i>` + sum(use) + `Wh</i> = <b class="` +
