@@ -6,8 +6,23 @@ div#bottom {
     background-color: white;
 }
 
+div#stick {
+    position: fixed;
+    top: 0px;
+    background-color: white;
+    z-index: 1000;
+    padding-bottom: 20px;
+}
+
+div#rest {
+    position: absolute;
+    top: 220px;
+}
+
 select {
     font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 label {
@@ -25,4 +40,12 @@ details {
             padding: 0px;
         }
     }
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
 }

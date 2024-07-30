@@ -198,7 +198,7 @@ function title_case(str) {
 }
 
 function add_element(elem) {
-    document.body.insertBefore(elem, document.getElementById("here"));
+    document.getElementById("rest").appendChild(elem);
 }
 
 function sum(arr) {
@@ -222,7 +222,8 @@ function calculate_totals() {
     });
     let fuel = sum(weights) * 70;
     document.getElementById("total-cost").innerHTML =
-        `Total cost: <i>£` + sum(costs) + ` (subtotal)</i> + <i>£` + fuel + `</i> (fuel) = <b>£` + (sum(costs) + fuel) + `</b>`;
+        `Total cost: <i>£` + sum(costs) + ` (subtotal)</i> + <i>£` + fuel + `</i> (fuel) = <b class="` +
+        (sum(costs) + fuel > BUDGET ? 'red' : 'green') + `">£` + (sum(costs) + fuel) + `</b>`;
     let vols = sels.map(sel => {
         let val = sel.value;
         let lab = sel.getAttribute("label");
