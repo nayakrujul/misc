@@ -1,9 +1,14 @@
+:root {
+    text-align: center;
+}
+
 div#bottom {
     width: 100%;
     position: fixed;
     padding: 5px;
     bottom: 0px;
-    background-color: white;
+    left: 0px;
+    background-color: #f97316;
 }
 
 div#stick {
@@ -11,37 +16,49 @@ div#stick {
     position: fixed;
     top: 0px;
     left: 0px;
-    background-color: white;
+    background-color: #15191e;
+    color: #e5e7eb;
     z-index: 1000;
     padding-bottom: 10px;
     padding-left: 8px;
-    border-bottom: 3px solid black;
 }
 
 div#rest {
+    background-color: #f97316;
+    width: 100%;
     position: absolute;
-    top: 250px;
+    padding-top: 225px;
+    top: 0px;
+    left: 0px;
+    color: #15191e;
 }
 
 select {
     font-size: 20px;
     padding: 10px;
     border-radius: 10px;
+    background-color: #fba061;
 }
 
 label {
     font-weight: bold;
 }
 
-details {
-    margin: 20px;
-    padding-bottom: 20px;
+ul {
+    list-style: none;
+    margin: 10px;
+    margin-bottom: 50px;
+    padding: 0px;
+    display: flex;
 
-    ul {
+    li {
+        padding: 10px;
         margin: 10px;
+        border: 1px solid #15191e;
+        flex: 1;
 
-        li {
-            padding: 0px;
+        strong {
+            color: #7316f9;
         }
     }
 }
@@ -52,4 +69,13 @@ details {
 
 .green {
     color: green;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

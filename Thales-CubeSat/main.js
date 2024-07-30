@@ -273,7 +273,7 @@ function show_details(el) {
     let dct = OPTIONS[lab][val];
     let lst = document.getElementById(el.id.replace("select", "ul"));
     lst.innerHTML = [...Object.entries(dct)].map(([a, b]) => 
-        `<li>${a}: ${b}</li>`
+        `<li>${a}: <strong>${b}</strong></li>`
     ).join("");
 
     calculate_totals();
@@ -299,11 +299,8 @@ function antenna() {
     let label = document.createElement("label");
     label.setAttribute("for", `select-${i}`);
     label.innerHTML = title_case(k.replaceAll("_", " ")) + ": &nbsp;";
-    let det = document.createElement("details");
-    det.innerHTML = `
-        <summary>Show details</summary>
-        <ul id="ul-${i}"></ul>
-    `;
+    let det = document.createElement("ul");
+    det.id = `ul-${i}`;
     add_element(label);
     add_element(select);
     add_element(det);
