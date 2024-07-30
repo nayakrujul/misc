@@ -231,6 +231,27 @@ function calculate_totals() {
         return dct["volume"] || 0;
     });
     document.getElementById("total-volume").innerHTML = `Total volume: <b>` + sum(vols) + `U</b>`;
+
+    let s7 = document.getElementById("select-7");
+
+    if (s7 === null) return;
+
+    if (sum(weights.slice(0, -1)) > 3500) {
+        if (s7.value !== "bradford") {
+            s7.value = "bradford";
+            show_details(s7);
+        }
+    } else if (sum(weights.slice(0, -1)) >= 2600) {
+        if (s7.value !== "pm200") {
+            s7.value = "pm200";
+            show_details(s7);
+        }
+    } else {
+        if (s7.value !== "halo") {
+            s7.value = "halo";
+            show_details(s7);
+        }
+    }
 }
 
 function show_details(el) {
@@ -261,6 +282,7 @@ function antenna() {
     select.innerHTML = Object.keys(v).map(s => 
         `<option value=${s}>${s.toUpperCase().replaceAll("_", " ")}</option>`
     ).join("");
+    if (i === 7) select.disabled = true;
     let label = document.createElement("label");
     label.setAttribute("for", `select-${i}`);
     label.innerHTML = title_case(k.replaceAll("_", " ")) + ": &nbsp;";
