@@ -188,6 +188,8 @@ const OPTIONS = {
     }
 };
 
+const BUDGET = 525000;
+
 function title_case(str) {
     return str.replace(
       /\w\S*/g,
@@ -205,27 +207,29 @@ function sum(arr) {
 
 function calculate_totals() {
     let sels = [...document.querySelectorAll("select")];
-    let costs = sels.map(sel => {
-        let val = sel.value;
-        let lab = sel.getAttribute("label");
-        let dct = OPTIONS[lab][val];
-        return dct["cost"] || 0;
-    });
-    document.getElementById("total-cost").innerHTML = `Total cost: £` + sum(costs);
     let weights = sels.map(sel => {
         let val = sel.value;
         let lab = sel.getAttribute("label");
         let dct = OPTIONS[lab][val];
         return dct["weight"] || 0;
     });
-    document.getElementById("total-weight").innerHTML = `Total weight: ` + sum(weights) + `g`;
+    document.getElementById("total-weight").innerHTML = `Total weight: <b>` + sum(weights) + `g</b>`;
+    let costs = sels.map(sel => {
+        let val = sel.value;
+        let lab = sel.getAttribute("label");
+        let dct = OPTIONS[lab][val];
+        return dct["cost"] || 0;
+    });
+    let fuel = sum(weights) * 70;
+    document.getElementById("total-cost").innerHTML =
+        `Total cost: <i>£` + sum(costs) + ` (subtotal)</i> + <i>£` + fuel + `</i> (fuel) = <b>£` + (sum(costs) + fuel) + `</b>`;
     let vols = sels.map(sel => {
         let val = sel.value;
         let lab = sel.getAttribute("label");
         let dct = OPTIONS[lab][val];
         return dct["volume"] || 0;
     });
-    document.getElementById("total-volume").innerHTML = `Total volume: ` + sum(vols) + `U`;
+    document.getElementById("total-volume").innerHTML = `Total volume: <b>` + sum(vols) + `U</b>`;
 }
 
 function show_details(el) {
