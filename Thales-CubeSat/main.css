@@ -5,10 +5,10 @@
 div#bottom {
     width: 100%;
     position: fixed;
-    padding: 5px;
+    padding: 5px 0px;
     bottom: 0px;
     left: 0px;
-    background-color: #f97316;
+    background-color: #00b4d8;
 }
 
 div#stick {
@@ -16,15 +16,15 @@ div#stick {
     position: fixed;
     top: 0px;
     left: 0px;
-    background-color: #15191e;
-    color: #e5e7eb;
+    background-color: #03045e;
+    color: #caf0f8;
     z-index: 1000;
     padding-bottom: 10px;
     padding-left: 8px;
 }
 
 div#rest {
-    background-color: #f97316;
+    background-color: #00b4d8;
     width: 100%;
     position: absolute;
     padding-top: 225px;
@@ -37,7 +37,7 @@ select {
     font-size: 20px;
     padding: 10px;
     border-radius: 10px;
-    background-color: #fba061;
+    background-color: #90e0ef;
 }
 
 label {
