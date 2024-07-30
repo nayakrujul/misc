@@ -232,6 +232,19 @@ function calculate_totals() {
     });
     document.getElementById("total-volume").innerHTML = `Total volume: <b>` + sum(vols) + `U</b>`;
 
+    if (document.getElementById("select-6") === null) return;
+
+    let energy = OPTIONS["eps"][document.getElementById("select-6").value]["energy"];
+    let use = sels.map(sel => {
+        let val = sel.value;
+        let lab = sel.getAttribute("label");
+        let dct = OPTIONS[lab][val];
+        return (dct["power"] || 0) * (dct["time"] || 1);
+    });
+    document.getElementById("total-power").innerHTML =
+        `Available power: <i>` + energy + `Wh</i> - <i>` + sum(use) + `Wh</i> = <b class="` +
+        (energy < sum(use) ? 'red' : 'green') + `">` + (energy - sum(use)) + `Wh</b>`;
+
     let s7 = document.getElementById("select-7");
 
     if (s7 === null) return;
