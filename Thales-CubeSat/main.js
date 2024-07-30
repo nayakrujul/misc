@@ -180,7 +180,7 @@ const OPTIONS = {
         },
         halo: {
             cost: 80000,
-            weight: 2.5,
+            weight: 2500,
             volume: 2,
             thrust: 0.085,
             wclass: "A"
