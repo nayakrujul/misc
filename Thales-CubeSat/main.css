@@ -8,7 +8,7 @@ div#bottom {
     padding: 5px 0px;
     bottom: 0px;
     left: 0px;
-    background-color: #00b4d8;
+    background-color: white;
 }
 
 div#stick {
@@ -16,18 +16,21 @@ div#stick {
     position: fixed;
     top: 0px;
     left: 0px;
-    background-color: #03045e;
-    color: #caf0f8;
+    background: linear-gradient(225deg, #07326a, #0a61c9);
+    color: #f1f7f9;
     z-index: 1000;
     padding-bottom: 10px;
     padding-left: 8px;
 }
 
+h1 {
+    font-size: 40px;
+}
+
 div#rest {
-    background-color: #00b4d8;
     width: 100%;
     position: absolute;
-    padding-top: 225px;
+    padding-top: 250px;
     top: 0px;
     left: 0px;
     color: #15191e;
@@ -37,7 +40,6 @@ select {
     font-size: 20px;
     padding: 10px;
     border-radius: 10px;
-    background-color: #90e0ef;
 }
 
 label {
@@ -64,11 +66,11 @@ ul {
 }
 
 .red {
-    color: red;
+    color: #d9544d;
 }
 
 .green {
-    color: green;
+    color: #00c04b;
 }
 
 @keyframes fadeIn {
