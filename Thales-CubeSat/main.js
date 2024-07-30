@@ -243,7 +243,7 @@ function calculate_totals() {
     });
     document.getElementById("total-power").innerHTML =
         `Available power: <i>` + energy + `Wh</i> - <i>` + sum(use) + `Wh</i> = <b class="` +
-        (energy < sum(use) ? 'red' : 'green') + `">` + (energy - sum(use)) + `Wh</b>`;
+        (energy < sum(use) ? 'red' : 'green') + `">` + +(energy - sum(use)).toFixed(5) + `Wh</b>`;
 
     let s7 = document.getElementById("select-7");
 
