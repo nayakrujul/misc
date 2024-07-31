@@ -1,9 +1,9 @@
 const OPTIONS = {
     chassis: {
-        _8U: {
-            cost: 7900,
-            weight: 1300,
-            capacity: 8
+        _6U: {
+            cost: 6400,
+            weight: 850,
+            capacity: 6
         }
     },
     payload: {
