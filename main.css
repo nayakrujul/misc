@@ -11,7 +11,7 @@ li {
     padding-bottom: 20px;
 }
 
-table {
+table:not(.exempt) {
     border: 1px solid black;
     width: 100%;
     box-sizing: border-box;
