@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="stylesheet" href="./main.css">
+
+        <title>PageRank Video Links</title>
+
+        <link rel="icon" type="image/png" href="https://rujulnayak.com/logos/icon-black.png"/>
+        <meta property="og:image" content="https://rujulnayak.com/logos/colour.png" />
+        <meta property="og:image:width" content="2000" />
+        <meta property="og:image:height" content="1500" />
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Links for my video on Google's PageRank algorithm.">
+    </head>
+    <body>
+        <h1 id="top">PageRank Video Links</h1>
+
+        <h3>Sources</h3>
+
+        <ul>
+            <li>
+                <i>"The anatomy of a large-scale hypertextual Web search engine"</i> by Sergey Brin and Larry Page, accessed
+                <a href="https://www.sciencedirect.com/science/article/abs/pii/S016975529800110X">through ScienceDirect</a>.
+            </li>
+            <li>
+                <i>"A Guide to Google Search Ranking Systems"</i> on
+                <a href="https://developers.google.com/search/docs/appearance/ranking-systems-guide#link-analysis">Google Search Central</a>.
+            </li>
+            <li>
+                <i>"Google PageRank Explained for SEO Beginners"</i> on
+                <a href="https://www.searchenginejournal.com/google-pagerank/483521/">Search Engine Journal</a>.
+            </li>
+            <li>
+                <i>"Is Google PageRank Still Important?"</i> on
+                <a href="https://www.semrush.com/blog/pagerank/">Semrush Blog</a>.
+            </li>
+        </ul>
+
+        <h3>Other notes</h3>
+
+        <ul>
+            <li>
+                The Python implementation of the algorithm can be found
+                <a href="https://gist.github.com/nayakrujul/af497dad7f8fc70ec1cc21a426556a1e">here</a>.
+            </li>
+            <li>
+                The example with the four pages A, B, C and D uses
+                <a href="https://en.wikipedia.org/wiki/Rounding#Rounding_half_to_even">bankers' rounding</a> to ensure
+                that the rankings always add to 1. <br />
+                (This means that 0.125 is rounded down to 0.12, while 0.375 is rounded up to 0.38.)
+            </li>
+        </ul>
+
+        <br /> <br />
+        <div id="bottom">
+            <sub>&copy; Rujul Nayak 2024</sub>
+        </div>
+        <script src="./main.js"></script>
+    </body>
+</html>
