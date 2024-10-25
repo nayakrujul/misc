@@ -15,18 +15,27 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Easily score darts games on a phone.">
+        <meta name="description" content="Easily score darts games.">
     </head>
 
     <body>
 
-        <h1 id="heading">Darts scorer</h1>
+        <h1 id="heading">Darts Scorer</h1>
 
-        <input type="text" inputmode="numeric" pattern="[0-9]*" id="input" placeholder="Score" />
-        
-        <p>Scores:</p>
-        <ul id="ulist"></ul>
-        <p id="total">(Total: <b>0</b> from 0 throws)</p>
+        <select id="team-select">
+            <option value="0" selected>Team 1</option>
+            <option value="+" id="add-team">Add Team</option>
+        </select>
+
+        <div class="team-div" id="team-div-0">
+            <p class="team-score" id="team-score-0"><i>Total score: <b>0</b></i></p>
+            <input type="button" value="Add Player" class="new-player" id="new-player-0" />
+            <div class="player-div" id="player-div-0-0">
+                <h3 class="player-header" id="player-header-0-0">Player 1 <i>(0)</i></h3>
+                <input type="text" placeholder="Score" class="player-score" id="player-score-0-0" />
+                <p class="player-scores" id="player-scores-0-0">Scores: </p>
+            </div>
+        </div>
 
         <div id="bottom">
             <sub>&copy; Rujul Nayak 2024</sub>

@@ -6,21 +6,25 @@ div#bottom {
     background-color: white;
 }
 
-input#input {
-    width: calc(100% - 6px);
-    font-family: monospace;
-    font-size: 32px;
-    overflow-y: hidden;
+select#team-select {
+    position: fixed;
+    top: 20px;
+    right: 8px;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    text-align: center;
 }
 
-ul#ulist {
-    margin-top: 0px;
-
-    li.no-padding {
-        padding: 0px;
-    }
+h3.player-header {
+    margin-top: 30px;
 }
 
-p#total b {
-    font-size: 24px;
+input.player-score {
+    font-size: 20px;
+}
+
+input.new-player {
+    margin-top: 10px;
+    padding: 5px 10px;
 }
