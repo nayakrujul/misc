@@ -4,6 +4,8 @@ const box = document.getElementById("tickbox");
 const bit = document.getElementById("bit-out");
 const txt = document.getElementById("txt-out");
 
+let actual_value = "";
+
 function toASCII(char) {
     return char.charCodeAt(0).toString(2).padStart(7, "0");
 }
@@ -42,6 +44,7 @@ function handler() {
         b = randomiseKey(a.length);
         key.value = makePrintable(b);
     }
+    actual_value = b;
     if (allASCII(a + b)) {
         if (a.length <= b.length) {
             bit.innerHTML = "Bitstring: <code>" + bitCipher(a, b) + "</code>";
@@ -57,8 +60,13 @@ function handler() {
 }
 
 function tickboxHandler() {
-    key.disabled = box.checked;
-    if (box.checked) key.value = randomiseKey(msg.value.length);
+    if (box.checked) {
+        key.disabled = true;
+        key.value = randomiseKey(msg.value.length);
+    } else {
+        key.disabled = false;
+        key.value = actual_value;
+    }
     handler();
 }
 
