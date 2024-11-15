@@ -1,5 +1,6 @@
 const msg = document.getElementById("message");
 const key = document.getElementById("keytext");
+const box = document.getElementById("tickbox");
 const bit = document.getElementById("bit-out");
 const txt = document.getElementById("txt-out");
 
@@ -31,8 +32,16 @@ function allASCII(str) {
     return [...str].every(c => c.charCodeAt(0) < 128);
 }
 
+function randomiseKey(n) {
+    return [...Array(n)].map(_ => String.fromCharCode(Math.floor(Math.random() * 128))).join("");
+}
+
 function handler() {
     let [a, b] = [msg.value, key.value];
+    if (box.checked) {
+        b = randomiseKey(a.length);
+        key.value = makePrintable(b);
+    }
     if (allASCII(a + b)) {
         if (a.length <= b.length) {
             bit.innerHTML = "Bitstring: <code>" + bitCipher(a, b) + "</code>";
@@ -47,5 +56,12 @@ function handler() {
     }
 }
 
+function tickboxHandler() {
+    key.disabled = box.checked;
+    if (box.checked) key.value = randomiseKey(msg.value.length);
+    handler();
+}
+
 msg.addEventListener("input", handler);
 key.addEventListener("input", handler);
+box.addEventListener("change", tickboxHandler);
