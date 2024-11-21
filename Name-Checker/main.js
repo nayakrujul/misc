@@ -4,6 +4,7 @@ const txt1 = document.getElementById("len1");
 const txt2 = document.getElementById("len2");
 const txt3 = document.getElementById("len3");
 const out = document.getElementById("output");
+const btn = document.getElementById("copy");
 
 function pluralise(n, s, p=null) {
     if (p === null) p = s + "s";
@@ -12,6 +13,7 @@ function pluralise(n, s, p=null) {
 }
 
 function handler() {
+    btn.value = "Copy!";
     names1 = lst1.value.split("\n").filter(a => a.length);
     names2 = lst2.value.split("\n").filter(b => b.length);
     let res = names1.filter(x => !names2.includes(x));
@@ -23,3 +25,9 @@ function handler() {
 
 lst1.addEventListener("input", handler);
 lst2.addEventListener("input", handler);
+
+btn.addEventListener("click", () => {
+    btn.value = "Loading...";
+    navigator.clipboard.writeText(out.innerHTML)
+        .then(() => btn.value = "Copied!").catch(() => btn.value = "Error.");
+});
