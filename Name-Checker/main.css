@@ -11,30 +11,3 @@ textarea {
     box-sizing: border-box;
     resize: vertical;
 }
-
-/*Remove*/
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-a {
-    color: #3366cc;
-    font-style: italic;
-}
-
-li {
-    padding-bottom: 20px;
-}
-
-table:not(.exempt) {
-    border: 1px solid black;
-    width: 100%;
-    box-sizing: border-box;
-
-    th, td {
-        text-align: left;
-        border: 1px solid black;
-        padding: 10px;
-    }
-}
