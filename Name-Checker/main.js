@@ -28,6 +28,6 @@ lst2.addEventListener("input", handler);
 
 btn.addEventListener("click", () => {
     btn.value = "Loading...";
-    navigator.clipboard.writeText(out.innerHTML)
+    navigator.clipboard.writeText(out.innerHTML === `<i>Nothing to display right now...</i>` ? " " : out.innerHTML)
         .then(() => btn.value = "Copied!").catch(() => btn.value = "Error.");
 });

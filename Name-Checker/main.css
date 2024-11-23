@@ -1,5 +1,15 @@
 body {
     text-align: center;
+    background-color: rgb(240, 243, 244);
+}
+
+h1#heading {
+    color: #2B58EC;
+    font-size: 50px;
+}
+
+b {
+    color: #BF40BF;
 }
 
 div#bottom {
@@ -7,7 +17,7 @@ div#bottom {
     position: fixed;
     padding: 5px;
     bottom: 0px;
-    background-color: white;
+    background-color: rgb(240, 243, 244);
 }
 
 textarea {
@@ -15,15 +25,45 @@ textarea {
     width: 100%;
     box-sizing: border-box;
     resize: vertical;
+    border-radius: 5px;
+    box-shadow: none;
+    transition: box-shadow 200ms;
+}
+
+textarea:focus {
+    box-shadow: 0px 0px 5px 5px rgba(139, 77, 255, 0.2);
 }
 
 div.section {
-    border: 3px solid black;
+    border: 3px solid #CC5500;
     border-radius: 20px;
     padding: 20px;
     margin: 20px;
+    background-color: #F6F6FF;
+    box-shadow: none;
+    transition: box-shadow 200ms;
 
     h2 {
         margin-top: 0px;
     }
+}
+
+div.section:has(textarea:focus) {
+    box-shadow: 0px 0px 7px 7px rgba(204, 85, 0, 0.2);
+}
+
+pre code {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type=button] {
+    background-color: rgba(139, 77, 255, 0.1);
+    border: 1px solid grey;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 500ms;
+}
+
+input[type=button]:hover {
+    background-color: rgba(139, 77, 255, 0.2);
 }
