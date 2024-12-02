@@ -3,7 +3,10 @@ const lst2 = document.getElementById("list2");
 const txt1 = document.getElementById("len1");
 const txt2 = document.getElementById("len2");
 const txt3 = document.getElementById("len3");
+
 const out = document.getElementById("output");
+const eql = document.getElementById("equal");
+const cse = document.getElementById("case");
 const btn = document.getElementById("copy");
 
 function pluralise(n, s, p=null) {
@@ -16,7 +19,13 @@ function handler() {
     btn.value = "Copy!";
     names1 = lst1.value.split("\n").filter(a => a.length);
     names2 = lst2.value.split("\n").filter(b => b.length);
-    let res = names1.filter(x => !names2.includes(x));
+    if (cse.checked) {
+        res = names1.filter(x => !names2.includes(x));
+        eql.innerHTML = "&ne;";
+    } else {
+        res = names1.filter(x => !names2.map(s => s.toLowerCase()).includes(x.toLowerCase()));
+        eql.innerHTML = "=";
+    }
     out.innerHTML = res.join("\n") || `<i>Nothing to display right now...</i>`;
     txt1.innerHTML = pluralise(names1.length, "name");
     txt2.innerHTML = pluralise(names2.length, "name");
@@ -25,6 +34,7 @@ function handler() {
 
 lst1.addEventListener("input", handler);
 lst2.addEventListener("input", handler);
+cse.addEventListener("change", handler);
 
 btn.addEventListener("click", () => {
     btn.value = "Loading...";
