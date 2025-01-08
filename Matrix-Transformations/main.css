@@ -51,6 +51,22 @@ div#options {
     input.number-input.invalid {
         border-bottom: 2px solid red;
     }
+
+    input[type=button] {
+        height: 24px;
+        background-color: rgb(237, 237, 237);
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        transition: border-color 200ms;
+    }
+
+    input[type=button]:hover {
+        border-color: rgba(0, 0, 0, 0.5);
+    }
+
+    input[type=button]:active {
+        transform: scale(0.9);
+    }
 }
 
 canvas#graph {

@@ -85,6 +85,12 @@ function label_x_axis() {
     let xmks = Array.from({length: xma - xmb}, (_, i) => (xmb + i) * xdiff);
     if (xmks.includes(0)) xmks.splice(xmks.indexOf(0), 1);
     xmks.forEach(xn => {
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "darkgray";
+        ctx.beginPath();
+        ctx.moveTo((xn - props.xmin) * props.xsc, 0);
+        ctx.lineTo((xn - props.xmin) * props.xsc, props.ch);
+        ctx.stroke();
         ctx.lineWidth = 3;
         ctx.strokeStyle = "black";
         ctx.beginPath();
@@ -94,12 +100,6 @@ function label_x_axis() {
         ctx.font = '16px "Cambria Maths"';
         ctx.textAlign = "center";
         ctx.fillText(xn.toFixed(Math.max(-xexp, 0)), (xn - props.xmin) * props.xsc, props.ysc * props.ymax + 25);
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = "darkgray";
-        ctx.beginPath();
-        ctx.moveTo((xn - props.xmin) * props.xsc, 0);
-        ctx.lineTo((xn - props.xmin) * props.xsc, props.ch);
-        ctx.stroke();
     });
 }
 
@@ -111,6 +111,12 @@ function label_y_axis() {
     let ymks = Array.from({length: yma - ymb}, (_, i) => (ymb + i) * ydiff);
     if (ymks.includes(0)) ymks.splice(ymks.indexOf(0), 1);
     ymks.forEach(yn => {
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "darkgray";
+        ctx.beginPath();
+        ctx.moveTo(0, props.ch - (yn - props.ymin) * props.ysc);
+        ctx.lineTo(props.cw, props.ch - (yn - props.ymin) * props.ysc);
+        ctx.stroke();
         ctx.lineWidth = 3;
         ctx.strokeStyle = "black";
         ctx.beginPath();
@@ -120,12 +126,6 @@ function label_y_axis() {
         ctx.font = '16px "Cambria Maths"';
         ctx.textAlign = "left";
         ctx.fillText(yn.toFixed(Math.max(-yexp, 0)), props.xsc * -props.xmin + 15, props.ch - (yn - props.ymin) * props.ysc + 5);
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = "darkgray";
-        ctx.beginPath();
-        ctx.moveTo(0, props.ch - (yn - props.ymin) * props.ysc);
-        ctx.lineTo(props.cw, props.ch - (yn - props.ymin) * props.ysc);
-        ctx.stroke();
     });
 }
 
@@ -182,7 +182,6 @@ function move_canvas(event) {
     props.xmax = props.dims[1] + (sx - x) / props.xsc;
     props.ymin = props.dims[2] + (y - sy) / props.ysc;
     props.ymax = props.dims[3] + (y - sy) / props.ysc;
-    
     setup();
 }
 
@@ -211,9 +210,26 @@ function rescale({target}) {
     setup();
 }
 
+function zoom_in({deltaY}) {
+    let xrange = (props.xmax - props.xmin) * (1 + deltaY / 500);
+    [props.xmax, props.xmin] = [(props.xmax + props.xmin + xrange) / 2, (props.xmax + props.xmin - xrange) / 2];
+    let yrange = (props.ymax - props.ymin) * (1 + deltaY / 500);
+    [props.ymax, props.ymin] = [(props.ymax + props.ymin + yrange) / 2, (props.ymax + props.ymin - yrange) / 2];
+    setup();
+}
+
+function reset_scale() {
+    props.xmin = -5;
+    props.xmax = 5;
+    props.ymin = -(props.ch / props.cw) * 5;
+    props.ymax = -props.ymin;
+    setup();
+}
+
 setup();
 window.onresize = setup;
 canvas.addEventListener("mousemove", move_canvas);
+canvas.addEventListener("wheel", zoom_in);
 
 document.getElementById("xmin").addEventListener("input", rescale);
 document.getElementById("xmax").addEventListener("input", rescale);
@@ -223,3 +239,4 @@ document.getElementById("ymax").addEventListener("input", rescale);
 document.getElementById("xzoom").addEventListener("click", zoom_square_x);
 document.getElementById("yzoom").addEventListener("click", zoom_square_y);
 document.getElementById("ctr").addEventListener("click", centre);
+document.getElementById("rst").addEventListener("click", reset_scale);
