@@ -14,6 +14,7 @@ let props = {
     ysc: canvas.width / 10,  // scale of the y axis, in pixels per unit
     drag: null,  // coordinates of the start of the drag, null if no drag
     dims: null,  // copy of [xmin, xmax, ymin, ymax] from before the drag
+    tr: [[1, 0], [0, -1]],  // final transformation matrix
 }
 
 /**
@@ -134,6 +135,10 @@ function update_boxes() {
     document.getElementById("xmax").value = +props.xmax.toPrecision(5);
     document.getElementById("ymin").value = +props.ymin.toPrecision(5);
     document.getElementById("ymax").value = +props.ymax.toPrecision(5);
+    document.getElementById("matrix-output-0").innerHTML = props.tr[0][0];
+    document.getElementById("matrix-output-1").innerHTML = props.tr[0][1];
+    document.getElementById("matrix-output-2").innerHTML = props.tr[1][0];
+    document.getElementById("matrix-output-3").innerHTML = props.tr[1][1];
 }
 
 function setup() {
@@ -226,6 +231,47 @@ function reset_scale() {
     setup();
 }
 
+function update_tr() {
+    let mts = [...document.querySelectorAll("div.matrix.input-matrix")];
+    let out = mts.map(mt => {
+        let nums = [...mt.querySelectorAll("input.number-input")];
+        return [[+nums[0].value || 0, +nums[1].value || 0], [+nums[2].value || 0, +nums[3].value || 0]];
+    });
+    props.tr = combine_transformations(...out);
+    setup();
+}
+
+function add_mat() {
+    let div = document.createElement("div");
+    div.classList.add("matrix", "maths", "input-matrix");
+    div.innerHTML = `
+        <span class="matrix-bracket">[</span>
+        <div class="matrix-inputs">
+            <div class="row">
+                <input type="text" class="number-input" placeholder="0" value="1" />
+                <input type="text" class="number-input" placeholder="0" value="0" />
+            </div>
+            <div class="row">
+                <input type="text" class="number-input" placeholder="0" value="0" />
+                <input type="text" class="number-input" placeholder="0" value="1" />
+            </div>
+        </div>
+        <span class="matrix-bracket">]</span>
+    `;
+    document.getElementById("matrices").insertBefore(div, document.getElementById("mark"));
+    [...div.querySelectorAll("div.matrix input.number-input")].forEach(inp =>
+        inp.addEventListener("input", update_tr)
+    );
+    update_tr();
+}
+
+function rem_mat() {
+    let mts = [...document.querySelectorAll("div.matrix.input-matrix")];
+    if (mts.length < 2) return;
+    mts.pop().remove();
+    update_tr();
+}
+
 setup();
 window.onresize = setup;
 canvas.addEventListener("mousemove", move_canvas);
@@ -240,3 +286,10 @@ document.getElementById("xzoom").addEventListener("click", zoom_square_x);
 document.getElementById("yzoom").addEventListener("click", zoom_square_y);
 document.getElementById("ctr").addEventListener("click", centre);
 document.getElementById("rst").addEventListener("click", reset_scale);
+
+document.getElementById("add-matrix").addEventListener("click", add_mat);
+document.getElementById("rem-matrix").addEventListener("click", rem_mat);
+
+[...document.querySelectorAll("div.matrix input.number-input")].forEach(inp =>
+    inp.addEventListener("input", update_tr)
+);

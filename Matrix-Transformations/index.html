@@ -20,7 +20,40 @@
     <body>
         <div id="options">
             <div id="matrices">
-
+                <span>Matrices:</span>
+                <div class="matrix maths input-matrix">
+                    <span class="matrix-bracket">[</span>
+                    <div class="matrix-inputs">
+                        <div class="row">
+                            <input type="text" class="number-input" placeholder="0" value="1" />
+                            <input type="text" class="number-input" placeholder="0" value="0" />
+                        </div>
+                        <div class="row">
+                            <input type="text" class="number-input" placeholder="0" value="0" />
+                            <input type="text" class="number-input" placeholder="0" value="-1" />
+                        </div>
+                    </div>
+                    <span class="matrix-bracket">]</span>
+                </div>
+                <br id="mark" />
+                <input type="button" id="add-matrix" value="+" />
+                <input type="button" id="rem-matrix" value="-" />
+                <br /> <br />
+                <span>Final Transformation:</span>
+                <div class="matrix maths" id="output-matrix">
+                    <span class="matrix-bracket">[</span>
+                    <div class="matrix-inputs">
+                        <div class="row">
+                            <span id="matrix-output-0">1</span>
+                            <span id="matrix-output-1">0</span>
+                        </div>
+                        <div class="row">
+                            <span id="matrix-output-2">0</span>
+                            <span id="matrix-output-3">-1</span>
+                        </div>
+                    </div>
+                    <span class="matrix-bracket">]</span>
+                </div>
             </div>
             <div id="points">
 
