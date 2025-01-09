@@ -133,10 +133,14 @@ function label_y_axis() {
 }
 
 function update_boxes() {
-    document.getElementById("xmin").value = +props.xmin.toPrecision(5);
-    document.getElementById("xmax").value = +props.xmax.toPrecision(5);
-    document.getElementById("ymin").value = +props.ymin.toPrecision(5);
-    document.getElementById("ymax").value = +props.ymax.toPrecision(5);
+    if (props.xmin !== +document.getElementById("xmin").value)
+        document.getElementById("xmin").value = +props.xmin.toPrecision(5);
+    if (props.xmax !== +document.getElementById("xmax").value)
+        document.getElementById("xmax").value = +props.xmax.toPrecision(5);
+    if (props.ymin !== +document.getElementById("ymin").value)
+        document.getElementById("ymin").value = +props.ymin.toPrecision(5);
+    if (props.ymax !== +document.getElementById("ymax").value)
+        document.getElementById("ymax").value = +props.ymax.toPrecision(5);
     document.getElementById("matrix-output-0").innerHTML = props.tr[0][0];
     document.getElementById("matrix-output-1").innerHTML = props.tr[0][1];
     document.getElementById("matrix-output-2").innerHTML = props.tr[1][0];
@@ -218,11 +222,18 @@ function rescale({target}) {
     setup();
 }
 
-function zoom_in({deltaY}) {
+function zoom_in({offsetX, offsetY, deltaY}) {
+    let [ox, oy] = [offsetX / props.xsc + props.xmin, props.ymax - offsetY / props.ysc];
     let xrange = (props.xmax - props.xmin) * (1 + deltaY / 500);
-    [props.xmax, props.xmin] = [(props.xmax + props.xmin + xrange) / 2, (props.xmax + props.xmin - xrange) / 2];
+    [props.xmax, props.xmin] = [
+        props.xmax + (xrange - props.xmax + props.xmin) * (props.xmax - ox) / (props.xmax - props.xmin),
+        props.xmin - (xrange - props.xmax + props.xmin) * (ox - props.xmin) / (props.xmax - props.xmin),
+    ];
     let yrange = (props.ymax - props.ymin) * (1 + deltaY / 500);
-    [props.ymax, props.ymin] = [(props.ymax + props.ymin + yrange) / 2, (props.ymax + props.ymin - yrange) / 2];
+    [props.ymax, props.ymin] = [
+        props.ymax + (yrange - props.ymax + props.ymin) * (props.ymax - oy) / (props.ymax - props.ymin),
+        props.ymin - (yrange - props.ymax + props.ymin) * (oy - props.ymin) / (props.ymax - props.ymin),
+    ];
     setup();
 }
 
@@ -321,6 +332,8 @@ function plot_points() {
         let [x, y] = pt.querySelectorAll("input.number-input");
         let [x1, y1] = [+x.value, +y.value];
         let [x2, y2] = transform(props.tr, [x1, y1]);
+        if (isNaN(x2) || isNaN(y2))
+            return pt.querySelector("span.transformed-point").innerHTML = "ERROR";
         ctx.strokeStyle = COLOURS[ix % COLOURS.length];
         draw_arrow(
             (x1 - props.xmin) * props.xsc, (props.ymax - y1) * props.ysc, 
