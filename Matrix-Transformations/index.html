@@ -15,7 +15,7 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Visualise matrix transformations in your browser.">
+        <meta name="description" content="Visualise matrix transformations on an interactive graph.">
     </head>
     <body>
         <div id="options">
@@ -25,12 +25,12 @@
                     <span class="matrix-bracket">[</span>
                     <div class="matrix-inputs">
                         <div class="row">
-                            <input type="text" class="number-input" placeholder="0" value="1" />
-                            <input type="text" class="number-input" placeholder="0" value="0" />
-                        </div>
-                        <div class="row">
                             <input type="text" class="number-input" placeholder="0" value="0" />
                             <input type="text" class="number-input" placeholder="0" value="-1" />
+                        </div>
+                        <div class="row">
+                            <input type="text" class="number-input" placeholder="0" value="-1" />
+                            <input type="text" class="number-input" placeholder="0" value="0" />
                         </div>
                     </div>
                     <span class="matrix-bracket">]</span>
@@ -56,7 +56,46 @@
                 </div>
             </div>
             <div id="points">
-
+                <span>Points:</span>
+                <br /> <br />
+                <div class="point maths">
+                    (
+                        <input type="text" class="number-input" placeholder="0" value="1" />,
+                        <input type="text" class="number-input" placeholder="0" value="0" />
+                    )
+                    &rarr;
+                    <span class="transformed-point">
+                        (0, -1)
+                    </span>
+                    &ensp;
+                    <input type="button" value="-" class="remove-point" />
+                </div>
+                <div class="point maths">
+                    (
+                        <input type="text" class="number-input" placeholder="0" value="0" />,
+                        <input type="text" class="number-input" placeholder="0" value="1" />
+                    )
+                    &rarr;
+                    <span class="transformed-point">
+                        (-1, 0)
+                    </span>
+                    &ensp;
+                    <input type="button" value="-" class="remove-point" />
+                </div>
+                <div class="point maths">
+                    (
+                        <input type="text" class="number-input" placeholder="0" value="1" />,
+                        <input type="text" class="number-input" placeholder="0" value="1" />
+                    )
+                    &rarr;
+                    <span class="transformed-point">
+                        (-1, -1)
+                    </span>
+                    &ensp;
+                    <input type="button" value="-" class="remove-point" />
+                </div>
+                <br id="mark2" />
+                <input type="button" value="+" id="add-point" />
             </div>
             <div id="scales">
                 <label for="xmin"><span class="maths">x</span>-axis:&nbsp;</label>

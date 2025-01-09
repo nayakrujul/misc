@@ -3,6 +3,8 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 const ctx = canvas.getContext("2d");
 
+const COLOURS = ["red", "blue", "green", "purple", "orange", "cyan"];
+
 let props = {
     cw: canvas.width,   // width of the canvas, in pixels
     ch: canvas.height,  // height of the canvas, in pixels
@@ -14,7 +16,7 @@ let props = {
     ysc: canvas.width / 10,  // scale of the y axis, in pixels per unit
     drag: null,  // coordinates of the start of the drag, null if no drag
     dims: null,  // copy of [xmin, xmax, ymin, ymax] from before the drag
-    tr: [[1, 0], [0, -1]],  // final transformation matrix
+    tr: [[0, -1], [-1, 0]],  // final transformation matrix
 }
 
 /**
@@ -152,6 +154,7 @@ function setup() {
     draw_axes();
     label_x_axis();
     label_y_axis();
+    plot_points();
     update_boxes();
 }
 
@@ -272,6 +275,77 @@ function rem_mat() {
     update_tr();
 }
 
+function plot_point(x, y, c) {
+    let xc = (x - props.xmin) * props.xsc;
+    let yc = (props.ymax - y) * props.ysc;
+    ctx.beginPath();
+    ctx.fillStyle = c;
+    ctx.arc(xc, yc, 5, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.strokeStyle = "black";
+    ctx.strokeWidth = 1;
+    ctx.stroke();
+}
+
+function add_pt() {
+    let div = document.createElement("div");
+    div.classList.add("point", "maths");
+    div.innerHTML = `
+        (
+            <input type="text" class="number-input" placeholder="0" value="0" />,
+            <input type="text" class="number-input" placeholder="0" value="0" />
+        )
+        &rarr;
+        <span class="transformed-point">
+            (0, 0)
+        </span>
+        &ensp;
+        <input type="button" value="-" class="remove-point" />
+    `;
+    document.getElementById("points").insertBefore(div, document.getElementById("mark2"));
+    div.querySelector("input.remove-point").addEventListener("click", rem_pt);
+    [...div.querySelectorAll("input.number-input")].forEach(ini => 
+        ini.addEventListener("input", setup)
+    );
+    setup();
+}
+
+function rem_pt({target}) {
+    target.parentElement.remove();
+    setup();
+}
+
+function plot_points() {
+    pts = [...document.getElementById("points").querySelectorAll("div.point")];
+    pts.forEach((pt, ix) => {
+        let [x, y] = pt.querySelectorAll("input.number-input");
+        let [x1, y1] = [+x.value, +y.value];
+        let [x2, y2] = transform(props.tr, [x1, y1]);
+        ctx.strokeStyle = COLOURS[ix % COLOURS.length];
+        draw_arrow(
+            (x1 - props.xmin) * props.xsc, (props.ymax - y1) * props.ysc, 
+            (x2 - props.xmin) * props.xsc, (props.ymax - y2) * props.ysc
+        );
+        plot_point(x1, y1, COLOURS[ix % COLOURS.length]);
+        plot_point(x2, y2, COLOURS[ix % COLOURS.length]);
+        pt.querySelector("span.transformed-point").innerHTML = `(${x2}, ${y2})`;
+    });
+}
+
+function draw_arrow(x1, y1, x2, y2) {
+    let [dx, dy] = [x2 - x1, y2 - y1];
+    let ang = Math.atan2(dy, dx);
+    let head = 15;
+    ctx.beginPath();
+    ctx.lineWidth = 3;
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.lineTo(x2 - head * Math.cos(ang - Math.PI / 6), y2 - head * Math.sin(ang - Math.PI / 6));
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2 - head * Math.cos(ang + Math.PI / 6), y2 - head * Math.sin(ang + Math.PI / 6));
+    ctx.stroke();
+}
+
 setup();
 window.onresize = setup;
 canvas.addEventListener("mousemove", move_canvas);
@@ -289,7 +363,16 @@ document.getElementById("rst").addEventListener("click", reset_scale);
 
 document.getElementById("add-matrix").addEventListener("click", add_mat);
 document.getElementById("rem-matrix").addEventListener("click", rem_mat);
+document.getElementById("add-point").addEventListener("click", add_pt);
 
 [...document.querySelectorAll("div.matrix input.number-input")].forEach(inp =>
     inp.addEventListener("input", update_tr)
+);
+
+[...document.querySelectorAll("div.point input.remove-point")].forEach(btn =>
+    btn.addEventListener("click", rem_pt)
+);
+
+[...document.querySelectorAll("div.point input.number-input")].forEach(nip => 
+    nip.addEventListener("input", setup)
 );

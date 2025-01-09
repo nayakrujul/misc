@@ -96,6 +96,16 @@ div#options {
             }
         }
     }
+
+    div#points {
+        div.point {
+            font-size: 20px;
+
+            input.number-input {
+                width: 50px;
+            }
+        }
+    }
 }
 
 canvas#graph {
