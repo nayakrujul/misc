@@ -80,10 +80,23 @@ function draw_axes() {
     ctx.stroke();
 }
 
+function next_round_number(x) {
+    let log = Math.log10(x);
+    let flr = Math.floor(log);
+    let optns = [
+        [1 * 10 ** (flr - 1), flr - 1],
+        [2 * 10 ** (flr - 1), flr - 1],
+        [5 * 10 ** (flr - 1), flr - 1],
+        [1 * 10 ** flr, flr],
+        [2 * 10 ** flr, flr],
+        [5 * 10 ** flr, flr],
+    ];
+    return optns.filter(n => Math.log10(n[0]) < log).pop();
+}
+
 function label_x_axis() {
-    let xexp = Math.floor(Math.log10((props.xmax - props.xmin) * 0.375));
-    let xdiff = 10 ** xexp;
-    let [xma, xmb] = [Math.ceil(props.xmax / xdiff), Math.ceil(props.xmin / xdiff)]
+    let [xdiff, xexp] = next_round_number((props.xmax - props.xmin) * 0.2);
+    let [xma, xmb] = [Math.ceil(props.xmax / xdiff), Math.ceil(props.xmin / xdiff)];
     if (xmb === props.xmin / xdiff) xmb++;
     let xmks = Array.from({length: xma - xmb}, (_, i) => (xmb + i) * xdiff);
     if (xmks.includes(0)) xmks.splice(xmks.indexOf(0), 1);
@@ -107,9 +120,8 @@ function label_x_axis() {
 }
 
 function label_y_axis() {
-    let yexp = Math.floor(Math.log10((props.ymax - props.ymin) * 0.375));
-    let ydiff = 10 ** yexp;
-    let [yma, ymb] = [Math.ceil(props.ymax / ydiff), Math.ceil(props.ymin / ydiff)]
+    let [ydiff, yexp] = next_round_number((props.ymax - props.ymin) * 0.2);
+    let [yma, ymb] = [Math.ceil(props.ymax / ydiff), Math.ceil(props.ymin / ydiff)];
     if (ymb === props.ymin / ydiff) ymb++;
     let ymks = Array.from({length: yma - ymb}, (_, i) => (ymb + i) * ydiff);
     if (ymks.includes(0)) ymks.splice(ymks.indexOf(0), 1);
