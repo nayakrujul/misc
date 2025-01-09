@@ -95,52 +95,56 @@ function next_round_number(x) {
 }
 
 function label_x_axis() {
-    let [xdiff, xexp] = next_round_number((props.xmax - props.xmin) * 0.2);
+    let [xdiff, xexp] = next_round_number((props.xmax - props.xmin) * 0.25);
     let [xma, xmb] = [Math.ceil(props.xmax / xdiff), Math.ceil(props.xmin / xdiff)];
     if (xmb === props.xmin / xdiff) xmb++;
-    let xmks = Array.from({length: xma - xmb}, (_, i) => (xmb + i) * xdiff);
-    if (xmks.includes(0)) xmks.splice(xmks.indexOf(0), 1);
-    xmks.forEach(xn => {
+    let xmks = Array.from({length: 2 * (xma - xmb) + 1}, (_, i) => (xmb + (i - 1) / 2) * xdiff);
+    xmks.forEach((xn, ix) => {
+        if (xn === 0) return;
         ctx.lineWidth = 1;
-        ctx.strokeStyle = "darkgray";
+        ctx.strokeStyle = ix % 2 === 0 ? "lightgray" : "darkgray";
         ctx.beginPath();
         ctx.moveTo((xn - props.xmin) * props.xsc, 0);
         ctx.lineTo((xn - props.xmin) * props.xsc, props.ch);
         ctx.stroke();
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = "black";
-        ctx.beginPath();
-        ctx.moveTo((xn - props.xmin) * props.xsc, props.ysc * props.ymax - 10);
-        ctx.lineTo((xn - props.xmin) * props.xsc, props.ysc * props.ymax + 10);
-        ctx.stroke();
-        ctx.font = '16px "Cambria Maths"';
-        ctx.textAlign = "center";
-        ctx.fillText(xn.toFixed(Math.max(-xexp, 0)), (xn - props.xmin) * props.xsc, props.ysc * props.ymax + 25);
+        if (ix % 2 === 1) {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "black";
+            ctx.beginPath();
+            ctx.moveTo((xn - props.xmin) * props.xsc, props.ysc * props.ymax - 10);
+            ctx.lineTo((xn - props.xmin) * props.xsc, props.ysc * props.ymax + 10);
+            ctx.stroke();
+            ctx.font = '16px "Cambria Maths"';
+            ctx.textAlign = "center";
+            ctx.fillText(xn.toFixed(Math.max(-xexp, 0)), (xn - props.xmin) * props.xsc, props.ysc * props.ymax + 25);
+        }
     });
 }
 
 function label_y_axis() {
-    let [ydiff, yexp] = next_round_number((props.ymax - props.ymin) * 0.2);
+    let [ydiff, yexp] = next_round_number((props.ymax - props.ymin) * 0.25);
     let [yma, ymb] = [Math.ceil(props.ymax / ydiff), Math.ceil(props.ymin / ydiff)];
     if (ymb === props.ymin / ydiff) ymb++;
-    let ymks = Array.from({length: yma - ymb}, (_, i) => (ymb + i) * ydiff);
-    if (ymks.includes(0)) ymks.splice(ymks.indexOf(0), 1);
-    ymks.forEach(yn => {
+    let ymks = Array.from({length: 2 * (yma - ymb) + 1}, (_, i) => (ymb + (i - 1) / 2) * ydiff);
+    ymks.forEach((yn, iy) => {
+        if (yn === 0) return;
         ctx.lineWidth = 1;
-        ctx.strokeStyle = "darkgray";
+        ctx.strokeStyle = iy % 2 === 0 ? "lightgray" : "darkgray";
         ctx.beginPath();
         ctx.moveTo(0, props.ch - (yn - props.ymin) * props.ysc);
         ctx.lineTo(props.cw, props.ch - (yn - props.ymin) * props.ysc);
         ctx.stroke();
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = "black";
-        ctx.beginPath();
-        ctx.moveTo(props.xsc * -props.xmin - 10, props.ch - (yn - props.ymin) * props.ysc);
-        ctx.lineTo(props.xsc * -props.xmin + 10, props.ch - (yn - props.ymin) * props.ysc);
-        ctx.stroke();
-        ctx.font = '16px "Cambria Maths"';
-        ctx.textAlign = "left";
-        ctx.fillText(yn.toFixed(Math.max(-yexp, 0)), props.xsc * -props.xmin + 15, props.ch - (yn - props.ymin) * props.ysc + 5);
+        if (iy % 2 === 1) {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "black";
+            ctx.beginPath();
+            ctx.moveTo(props.xsc * -props.xmin - 10, props.ch - (yn - props.ymin) * props.ysc);
+            ctx.lineTo(props.xsc * -props.xmin + 10, props.ch - (yn - props.ymin) * props.ysc);
+            ctx.stroke();
+            ctx.font = '16px "Cambria Maths"';
+            ctx.textAlign = "left";
+            ctx.fillText(yn.toFixed(Math.max(-yexp, 0)), props.xsc * -props.xmin + 15, props.ch - (yn - props.ymin) * props.ysc + 5);
+        }
     });
 }
 
