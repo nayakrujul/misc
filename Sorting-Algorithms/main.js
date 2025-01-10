@@ -50,7 +50,6 @@ function animate(sts, fps) {
 function run() {
     let len = +document.getElementById("length").value;
     if (len < 2) len = 2;
-    if (len > 999) len = 999;
     let fps = +document.getElementById("frames").value;
     if (fps < 1) fps = 1;
     let alg = document.getElementById("algorithm").value;
@@ -68,6 +67,9 @@ function run() {
             break;
         case "selection":
             arr = selection_sort(lst);
+            break;
+        case "radix":
+            arr = radix_sort(lst);
             break;
     }
     document.getElementById("to-hide").hidden = true;

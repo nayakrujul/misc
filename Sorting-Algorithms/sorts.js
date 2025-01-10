@@ -85,3 +85,19 @@ function selection_sort(arr) {
     ret.push(new ArrayState(arr, []));
     return ret;
 }
+
+function radix_sort(arr) {
+    let ret = [new ArrayState(arr, [])];
+    let digits = (Math.max(...arr) + "").length
+    for (let i = 0; i < digits; i++) {
+        let buckets = Array.from({length: 10}, () => []);
+        for (let j = 0; arr.length > 0; j++) {
+            ret.push(new ArrayState(buckets.flat().concat(arr), [j]));
+            let [item] = arr.splice(0, 1);
+            buckets[+(item + "").padStart(digits, "0")[digits - i - 1]].push(item);
+        }
+        arr = buckets.flat()
+    }
+    ret.push(new ArrayState(arr, []));
+    return ret;
+}
