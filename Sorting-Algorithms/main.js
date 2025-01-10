@@ -44,7 +44,7 @@ function animate(sts, fps) {
     if (sts.length === 0) return;
     let [st] = sts.splice(0, 1);
     draw_array_state(st);
-    setTimeout(() => animate(sts), 1000 / fps);
+    setTimeout(() => animate(sts, fps), 1000 / fps);
 }
 
 function run() {
