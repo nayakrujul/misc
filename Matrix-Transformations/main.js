@@ -179,14 +179,16 @@ function setup() {
 }
 
 function zoom_square_x() {
-    props.xmin = -(props.cw / props.ch) * (props.ymax - props.ymin) / 2;
-    props.xmax = (props.cw / props.ch) * (props.ymax - props.ymin) / 2;
+    let xavg = (props.xmax + props.xmin) / 2;
+    props.xmin = xavg - (props.cw / props.ch) * (props.ymax - props.ymin) / 2;
+    props.xmax = xavg + (props.cw / props.ch) * (props.ymax - props.ymin) / 2;
     setup();
 }
 
 function zoom_square_y() {
-    props.ymin = -(props.ch / props.cw) * (props.xmax - props.xmin) / 2;
-    props.ymax = (props.ch / props.cw) * (props.xmax - props.xmin) / 2;
+    let yavg = (props.ymax + props.ymin) / 2;
+    props.ymin = yavg - (props.ch / props.cw) * (props.xmax - props.xmin) / 2;
+    props.ymax = yavg + (props.ch / props.cw) * (props.xmax - props.xmin) / 2;
     setup();
 }
 
