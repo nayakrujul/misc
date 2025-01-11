@@ -3,7 +3,11 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 const ctx = canvas.getContext("2d");
 
-const COLOURS = ["red", "blue", "green", "purple", "orange", "cyan"];
+const COLOURS = [
+    "#d0312d", "#3944bc", "#3cb043",
+    "#b200ed", "#ed7014", "#a45a52",
+    "#48aaad", "#9a7b4f", "#e3b778"
+];
 
 let props = {
     cw: canvas.width,   // width of the canvas, in pixels
