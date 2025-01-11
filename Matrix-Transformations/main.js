@@ -377,6 +377,17 @@ function draw_arrow(x1, y1, x2, y2) {
     ctx.stroke();
 }
 
+function download_image() {
+    let data = canvas.toDataURL("image/png");
+    let link = document.createElement("a");
+    link.href = data;
+    link.download = "graph.png";
+    link.hidden = true;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+}
+
 setup();
 window.onresize = setup;
 canvas.addEventListener("mousemove", move_canvas);
@@ -395,6 +406,8 @@ document.getElementById("rst").addEventListener("click", reset_scale);
 document.getElementById("add-matrix").addEventListener("click", add_mat);
 document.getElementById("rem-matrix").addEventListener("click", rem_mat);
 document.getElementById("add-point").addEventListener("click", add_pt);
+
+document.getElementById("download").addEventListener("click", download_image);
 
 [...document.querySelectorAll("div.matrix input.number-input")].forEach(inp =>
     inp.addEventListener("input", update_tr)
