@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="stylesheet" href="./main.css">
+
+        <title>Wordle Solver</title>
+
+        <link rel="icon" type="image/png" href="https://rujulnayak.com/logos/icon-black.png"/>
+        <meta property="og:image" content="https://rujulnayak.com/logos/colour.png" />
+        <meta property="og:image:width" content="2000" />
+        <meta property="og:image:height" content="1500" />
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Find the best Wordle guess using information theory.">
+    </head>
+
+    <body>
+
+        <h1 id="heading">Wordle Solver</h1>
+
+        <p id="error">Error loading words list. Try again later.</p>
+
+        <p id="small-screen">Your screen is too small to view this page.</p>
+
+        <div id="content">
+            <div id="wordle-box"></div>
+            <div id="guess-container">
+                <div id="guesses-box"></div>
+                <div id="answers-box">Loading...</div>
+            </div>
+        </div>
+
+        <div id="margin"></div>
+
+        <div id="bottom">
+            <sub>&copy; Rujul Nayak 2025</sub>
+        </div>
+
+        <script src="./main.js"></script>
+
+    </body>
+</html>
