@@ -57,11 +57,12 @@ div#content {
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
 
             div.wordle-letter {
                 width: 60px;
                 height: 80px;
+                margin: 0px 10px;
 
                 div.wordle-square {
                     width: 56px;
@@ -193,7 +194,7 @@ div#content {
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
     div#content, p#error {
         display: none;
     }
