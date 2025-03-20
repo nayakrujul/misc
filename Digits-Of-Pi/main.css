@@ -9,14 +9,14 @@ div#bottom {
 input#inputbox {
     width: calc(100% - 6px);
     font-family: monospace;
-    font-size: 1em;
+    font-size: 2em;
     overflow-y: hidden;
 }
 
 p#colours {
     font-family: monospace;
     overflow-wrap: anywhere;
-    font-size: 1em;
+    font-size: 2em;
     padding: 3px;
 }
 
