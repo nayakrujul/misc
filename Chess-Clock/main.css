@@ -1,0 +1,145 @@
+body {
+    text-align: center;
+}
+
+h1#heading {
+    font-size: 50px;
+}
+
+div#bottom {
+    width: 100%;
+    position: fixed;
+    padding: 5px;
+    bottom: 0px;
+    background-color: white;
+}
+
+div#options {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    div#time-select {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        width: 450px;
+
+        .bullet {
+            --colour1: #fff8f0;
+            --colour2: #fff0e0;
+            --colour3: #ffd0b0;
+            --colour4: #ffd0a0;
+        }
+
+        .blitz {
+            --colour1: #f0fff8;
+            --colour2: #e0fff0;
+            --colour3: #b0ffd0;
+            --colour4: #a0ffd0;
+        }
+
+        .rapid {
+            --colour1: #f0f8ff;
+            --colour2: #e0f0ff;
+            --colour3: #b0d0ff;
+            --colour4: #a0d0ff;
+        }
+
+        input.time-btn {
+            width: 100px;
+            font-size: 20px;
+            padding: 10px 0px;
+            margin: 10px;
+            background-color: var(--colour1);
+            border: 2px solid #444444;
+            border-radius: 10px;
+            transition: background-color 250ms;
+        }
+
+        input.time-btn:hover {
+            background-color: var(--colour2);
+            cursor: pointer;
+        }
+
+        input.time-btn.selected:hover {
+            background-color: var(--colour3);
+        }
+
+        input.time-btn.selected {
+            background-color: var(--colour4);
+            border-width: 3px;
+            padding: 8px 0px;
+        }
+    }
+
+    input#start-btn {
+        margin-top: 30px;
+        font-size: 24px;
+        background-color: #ddccff;
+        border: 2px solid black;
+        border-radius: 20px;
+        padding: 10px;
+        transition: background-color 250ms;
+    }
+
+    input#start-btn:hover {
+        background-color: #e8d8ff;
+        cursor: pointer;
+    }
+}
+
+div#clocks {
+    display: flex;
+    flex-flow: row nowrap;
+    height: calc(100vh - 250px);
+    align-items: center;
+
+    div.clock-div {
+        flex: 1;
+        margin: 25px;
+        border-radius: 50px;
+        transition: background-color 100ms;
+
+        h1.clock {
+            font-family: monospace;
+            font-size: 5rem;
+        }
+    }
+
+    div.clock-div.active {
+        background-color: beige;
+        cursor: pointer;
+    }
+
+    div.clock-div.lost {
+        background-color: lightcoral;
+    }
+
+    p#tip {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+div.hide {
+    display: none !important;
+}
+
+@media (max-width: 750px) {
+    div#clocks {
+        flex-flow: column nowrap;
+
+        div.clock-div {
+            display: flex;
+
+            h1.clock {
+                writing-mode: vertical-lr;
+                font-size: 4rem;
+            }
+        }
+    }
+}
