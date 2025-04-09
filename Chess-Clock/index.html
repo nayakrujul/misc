@@ -28,12 +28,24 @@
                 <input type="button" class="time-btn bullet" value="1 + 1" />
                 <input type="button" class="time-btn bullet" value="2 + 1" />
                 <input type="button" class="time-btn blitz" value="3 + 0" />
-                <input type="button" class="time-btn blitz" value="3 + 2" />
+                <input type="button" class="time-btn blitz selected" value="3 + 2" />
                 <input type="button" class="time-btn blitz" value="5 + 3" />
-                <input type="button" class="time-btn rapid selected" value="10 + 0" />
+                <input type="button" class="time-btn rapid" value="10 + 0" />
                 <input type="button" class="time-btn rapid" value="10 + 5" />
                 <input type="button" class="time-btn rapid" value="15 + 10" />
             </div>
+            <details id="custom">
+                <summary>More Time Controls</summary>
+                <label for="minutes">Start time:</label>
+                <input type="number" id="minutes" class="number-input" value="3" />
+                <span>min</span>
+                <input type="number" id="seconds" class="number-input" value="0" />
+                <span>sec</span>
+                <br />
+                <label for="minutes">Increment:</label>
+                <input type="number" id="increment" class="number-input" value="2" />
+                <span>sec</span>
+            </details>
             <input type="button" id="start-btn" value="Start!" >
         </div>
 
