@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="stylesheet" href="./main.css">
+
+        <title>Colour: black</title>
+
+        <link rel="icon" type="image/png" href="https://rujulnayak.com/logos/icon-black.png"/>
+        <meta property="og:image" content="https://rujulnayak.com/logos/colour.png" />
+        <meta property="og:image:width" content="2000" />
+        <meta property="og:image:height" content="1500" />
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Find information about colours easily in one place.">
+    </head>
+
+    <body>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for a colour..." />
+            <input type="button" id="search-button" value="Search!" />
+        </div>
+        <div class="container">
+            <div class="info-box" id="colour-info">
+                <header>
+                    <h1>Colour Information</h1>
+                </header>
+                <section class="colour-display">
+                    <div class="colour-box" id="colour-info-box"></div>
+                    <div class="colour-details">
+                        <p><strong>Hex:</strong> <code class="select" id="colour-info-hex">#000000</code></p>
+                        <p><strong>RGB:</strong> <code class="select" id="colour-info-rgb">rgb(0, 0, 0)</code></p>
+                        <p><strong>HSL:</strong> <code class="select" id="colour-info-hsl">hsl(0, 0%, 0%)</code></p>
+                    </div>
+                </section>
+            </div>
+            <div class="info-box" id="comp-colour">
+                <header>
+                    <h1>Complementary Colour</h1>
+                </header>
+                <section class="colour-display">
+                    <div class="colour-box" id="comp-colour-box"></div>
+                    <div class="colour-details">
+                        <p><strong>Hex:</strong> <code class="select" id="comp-colour-hex">#ffffff</code></p>
+                        <p><strong>RGB:</strong> <code class="select" id="comp-colour-rgb">rgb(255, 255, 255)</code></p>
+                        <p><strong>HSL:</strong> <code class="select" id="comp-colour-hsl">hsl(0, 100%, 100%)</code></p>
+                    </div>
+                </section>
+            </div>
+            <div class="info-box" id="rgb-sliders">
+                <header>
+                    <h1>RGB Sliders</h1>
+                </header>
+                <section class="colour-display">
+                    <div class="colour-box" id="rgb-sliders-box"></div>
+                    <div class="colour-details">
+                        <p><strong>R:</strong> <label for="red-slider" id="red-label">0</label> <input type="range" id="red-slider" class="colour-slider" min="0" max="255" step="1" value="0" /></p>
+                        <p><strong>G:</strong> <label for="green-slider" id="green-label">0</label> <input type="range" id="green-slider" class="colour-slider" min="0" max="255" step="1" value="0" /></p>
+                        <p><strong>B:</strong> <label for="blue-slider" id="blue-label">0</label> <input type="range" id="blue-slider" class="colour-slider" min="0" max="255" step="1" value="0" /></p>
+                    </div>
+                </section>
+            </div>
+            <div class="info-box" id="hsl-sliders">
+                <header>
+                    <h1>HSL Sliders</h1>
+                </header>
+                <section class="colour-display">
+                    <div class="colour-box" id="hsl-sliders-box"></div>
+                    <div class="colour-details">
+                        <p><strong>H:</strong> <label for="hue-slider" id="hue-label">0</label> <input type="range" id="hue-slider" class="colour-slider" min="0" max="360" step="1" value="0" /></p>
+                        <p><strong>S:</strong> <label for="sat-slider" id="sat-label">0</label> <input type="range" id="sat-slider" class="colour-slider" min="0" max="100" step="1" value="0" /></p>
+                        <p><strong>L:</strong> <label for="light-slider" id="light-label">0</label> <input type="range" id="light-slider" class="colour-slider" min="0" max="100" step="1" value="0" /></p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <footer>&copy; Rujul Nayak 2025</footer>
+
+        <script src="./main.js"></script>
+
+    </body>
+</html>
