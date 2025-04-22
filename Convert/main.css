@@ -2,14 +2,6 @@ h1#heading {
     padding-bottom: 10px;
 }
 
-div#bottom {
-    width: 100%;
-    position: fixed;
-    padding: 5px;
-    bottom: 0px;
-    background-color: white;
-}
-
 select, input, span#units-list, span#equals, span#result {
     font-size: 24px;
 }

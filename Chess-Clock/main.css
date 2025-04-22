@@ -6,14 +6,6 @@ h1#heading {
     font-size: 50px;
 }
 
-div#bottom {
-    width: 100%;
-    position: fixed;
-    padding: 5px;
-    bottom: 0px;
-    background-color: white;
-}
-
 div#options {
     position: absolute;
     left: 50%;

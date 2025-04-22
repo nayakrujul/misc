@@ -2,14 +2,6 @@
     scroll-behavior: smooth;
 }
 
-div#bottom {
-    width: 100%;
-    position: fixed;
-    padding: 5px;
-    bottom: 0px;
-    background-color: white;
-}
-
 table {
     border: 1px solid;
     td, th {

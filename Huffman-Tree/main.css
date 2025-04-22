@@ -2,14 +2,6 @@ h1#heading {
     padding-bottom: 10px;
 }
 
-div#bottom {
-    width: 100%;
-    position: fixed;
-    padding: 5px;
-    bottom: 0px;
-    background-color: white;
-}
-
 input#inputbox {
     width: 500px;
     max-width: calc(100% - 5px);

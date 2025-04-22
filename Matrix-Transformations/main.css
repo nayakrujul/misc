@@ -10,11 +10,12 @@ body {
     overflow-y: hidden;
 }
 
-div#bottom {
-    width: 100%;
+div#bottom-div {
+    width: calc(100% - 10px);
     position: fixed;
     padding: 5px;
     bottom: 0px;
+    left: 0px;
     background-color: lightgray;
     text-align: center;
 }

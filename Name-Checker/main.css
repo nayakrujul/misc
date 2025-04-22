@@ -12,11 +12,12 @@ b {
     color: #BF40BF;
 }
 
-div#bottom {
-    width: 100%;
+div#bottom-div {
+    width: calc(100% - 10px);
     position: fixed;
     padding: 5px;
     bottom: 0px;
+    left: 0px;
     background-color: rgb(240, 243, 244);
 }
 

@@ -2,15 +2,6 @@
     text-align: center;
 }
 
-div#bottom {
-    width: 100%;
-    position: fixed;
-    padding: 5px 0px;
-    bottom: 0px;
-    left: 0px;
-    background-color: white;
-}
-
 div#stick {
     width: 100%;
     position: fixed;

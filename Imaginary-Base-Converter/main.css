@@ -1,11 +1,3 @@
-div#bottom {
-    width: 100%;
-    position: fixed;
-    padding: 5px;
-    bottom: 0px;
-    background-color: white;
-}
-
 span#output {
     color: red;
 }
