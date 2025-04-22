@@ -51,7 +51,8 @@ function update_hsl() {
 
 let [href, args] = location.href.split("?", 2);
 let d = Object.fromEntries(decodeURI(args || "").split("&").map(x => x.split("=")));
-let colour = (d["h"] == "1" ? "#" : "") + d["c"] || "black";
+let colour = (d["h"] == "1" ? "#" : "") + d["c"];
+if (colour == "undefined") colour = "black";
 
 document.title = "Colour: " + colour;
 
