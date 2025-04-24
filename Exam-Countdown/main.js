@@ -1,4 +1,7 @@
 const arr = [...document.querySelectorAll("h1.countdown-timer")];
+const radios = [...document.querySelectorAll("input.radio-btn")];
+const subjects = ["drama", "english", "physics", "spanish"];
+const antisubjects = ["english", "drama", "spanish", "physics"];
 
 function time_to(end) {
     let diff = Math.abs(end - Date.now()) / 1000;
@@ -37,17 +40,51 @@ function update() {
     }
 }
 
-arr.forEach((elem, index) => {
-    let name = elem.getAttribute("name");
-    let end = (new Date(
-        Date.parse(elem.getAttribute("countdown-to"))
-        )
-    ).toLocaleDateString("en-GB", {
-        weekday: "short", month: "short", day: "numeric", year: "numeric",
-        hourCycle: "h23", hour: "numeric", minute: "numeric"
-    });
-    elem.innerHTML = `<span class="text">${name.replaceAll("-", " ")} (${end.replaceAll(" ", "&nbsp;")}):</span> &ensp; <span class="timer" id="timer${index}">&nbsp;</span>`;
-});
+function change_times(val) {
+    if (val == "drama") {
+        arr[0].setAttribute("countdown-to", "08 May 2025 08:30:00 GMT+1");
+        localStorage.setItem("subject0", val);
+    } else if (val == "english") {
+        arr[0].setAttribute("countdown-to", "12 May 2025 08:30:00 GMT+1");
+        localStorage.setItem("subject0", val);
+    } else if (val == "physics") {
+        arr[1].setAttribute("countdown-to", "16 Jun 2025 10:30:00 GMT+1");
+        localStorage.setItem("subject1", val);
+    } else if (val == "spanish") {
+        arr[1].setAttribute("countdown-to", "17 Jun 2025 10:00:00 GMT+1");
+        localStorage.setItem("subject1", val);
+    }
+}
 
-update();
+function update_text() {
+    arr.forEach((elem, index) => {
+        let name = elem.getAttribute("name");
+        let end = (new Date(
+            Date.parse(elem.getAttribute("countdown-to"))
+            )
+        ).toLocaleDateString("en-GB", {
+            weekday: "short", month: "short", day: "numeric", year: "numeric",
+            hourCycle: "h23", hour: "numeric", minute: "numeric"
+        });
+        elem.innerHTML = `<span class="text">${name.replaceAll("-", " ")} (${end.replaceAll(" ", "&nbsp;")}):</span> &ensp; <span class="timer" id="timer${index}">&nbsp;</span>`;
+    });
+    update();
+}
+
+function button_clicked(target) {
+    let value = target.value;
+    target.checked = true;
+    radios[antisubjects.indexOf(value)].checked = false;
+    change_times(value);
+    update_text();
+}
+
+radios.forEach(radio => radio.addEventListener("input", ({target}) => button_clicked(target)));
+
+let s0 = localStorage.getItem("subject0");
+let s1 = localStorage.getItem("subject1");
+if (s0 === "drama" || s0 === "english") button_clicked(radios[subjects.indexOf(s0)]);
+if (s1 === "physics" || s1 === "spanish") button_clicked(radios[subjects.indexOf(s1)]);
+
+update_text();
 setInterval(update, 200);
