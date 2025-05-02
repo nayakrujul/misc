@@ -1,0 +1,60 @@
+select#board {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+input#subject {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 125px);
+    margin: 0px 10px;
+}
+
+ul#autocomplete {
+    position: absolute;
+    width: calc(100% - 125px);
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    z-index: 1000;
+    font-size: 16px;
+    left: 99px;
+    top: 145px;
+    list-style-type: none;
+    padding-inline-start: 5px;
+    font-size: 16px;
+
+    li.autocomplete-item {
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    li.autocomplete-item:hover {
+        background-color: #f0f0f0;
+    }
+}
+
+table#results {
+    margin-top: 20px;
+    border: 2px solid black;
+    width: 100%;
+
+    tr:hover {
+        background-color: rgba(173, 216, 230, 0.5);
+    }
+
+    td:hover, th:hover {
+        font-weight: bold;
+        background-color: lightblue;
+    }
+}
+
+div#wrapper {
+    overflow: auto;
+    white-space: nowrap;
+}
