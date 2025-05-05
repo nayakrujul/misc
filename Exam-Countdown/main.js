@@ -1,7 +1,7 @@
 const arr = [...document.querySelectorAll("h1.countdown-timer")];
 const radios = [...document.querySelectorAll("input.radio-btn")];
-const subjects = ["drama", "english", "physics", "spanish"];
-const antisubjects = ["english", "drama", "spanish", "physics"];
+const subjects = ["drama", "latin", "english", "physics", "spanish"];
+const antisubjects = [["english", "latin"], ["drama", "english"], ["drama", "latin"], ["spanish"], ["physics"]];
 
 function time_to(end) {
     let diff = Math.abs(end - Date.now()) / 1000;
@@ -44,6 +44,9 @@ function change_times(val) {
     if (val == "drama") {
         arr[0].setAttribute("countdown-to", "08 May 2025 08:30:00 GMT+1");
         localStorage.setItem("subject0", val);
+    } else if (val == "latin") {
+        arr[0].setAttribute("countdown-to", "09 May 2025 08:30:00 GMT+1");
+        localStorage.setItem("subject0", val);
     } else if (val == "english") {
         arr[0].setAttribute("countdown-to", "12 May 2025 08:30:00 GMT+1");
         localStorage.setItem("subject0", val);
@@ -74,7 +77,7 @@ function update_text() {
 function button_clicked(target) {
     let value = target.value;
     target.checked = true;
-    radios[antisubjects.indexOf(value)].checked = false;
+    antisubjects[subjects.indexOf(value)].forEach(s => radios[subjects.indexOf(s)].checked = false);
     change_times(value);
     update_text();
 }
@@ -83,7 +86,7 @@ radios.forEach(radio => radio.addEventListener("input", ({target}) => button_cli
 
 let s0 = localStorage.getItem("subject0");
 let s1 = localStorage.getItem("subject1");
-if (s0 === "drama" || s0 === "english") button_clicked(radios[subjects.indexOf(s0)]);
+if (s0 === "drama" || s0 === "latin" || s0 === "english") button_clicked(radios[subjects.indexOf(s0)]);
 if (s1 === "physics" || s1 === "spanish") button_clicked(radios[subjects.indexOf(s1)]);
 
 update_text();
