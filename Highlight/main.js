@@ -99,7 +99,10 @@ function draw(arr, title, start_line=1) {
     });
     ctx.font = `${fontSize * 1.25}px monospace`;
     ctx.fillStyle = "black";
-    ctx.fillText(title, 0, fontSize * 1.25);
+    ctx.fillText("/ " + title, fontSize * 4, fontSize * 1.75);
+    img = new Image();
+    img.src = "./icon.png";
+    img.addEventListener("load", () => ctx.drawImage(img, 0, 0, fontSize * 3, fontSize * 3 / 536 * 462));
 }
 
 function preview() {
