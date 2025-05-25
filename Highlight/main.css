@@ -48,7 +48,7 @@ canvas#canvas {
     }
 }
 
-#size-div, #limits-div {
+#size-div, #limits-div, #filename-div {
     margin-top: 20px;
 
     label#size-value {

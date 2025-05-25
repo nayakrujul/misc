@@ -34,11 +34,13 @@ cnv.height = (24.62 / 15.92) * cnv.width;
 let fontSize = 15;
 let maxLines = Math.floor(cnv.height / (fontSize * 1.5));
 
+Object.keys(EXTENSIONS).forEach(k => {
+    document.getElementById("lang-select").innerHTML +=
+        `<option value="${k}" ${k === "py" ? "selected" : ""}>${EXTENSIONS[k]}</option>`;
+});
+
 function getHighlights(code, lang) {
-    sb.removeAttribute("data-highlighted");
-    sb.className = `language-${lang}`;
-    sb.innerHTML = code;
-    hljs.highlightElement(sb);
+    sb.innerHTML = hljs.highlight(code, {"language": lang}).value;
 }
 
 function tokenise() {
@@ -97,12 +99,12 @@ function draw(arr, title, start_line=1) {
             x += line.length;
         });
     });
-    ctx.font = `${fontSize * 1.25}px monospace`;
     ctx.fillStyle = "black";
-    ctx.fillText("/ " + title, fontSize * 4, fontSize * 1.75);
-    img = new Image();
-    img.src = "./icon.png";
-    img.addEventListener("load", () => ctx.drawImage(img, 0, 0, fontSize * 3, fontSize * 3 / 536 * 462));
+    ctx.font = `${fontSize * 3}px monospace`;
+    ctx.fillText("⬡", 0, fontSize * 2);
+    ctx.font = `${fontSize * 1.25}px monospace`;
+    ctx.fillText("♟", fontSize * 5 / 8, fontSize * 1.5)
+    ctx.fillText("/ " + title, fontSize * 3, fontSize * 1.5);
 }
 
 function preview() {
@@ -119,6 +121,10 @@ function update_boxes() {
     if (start_value > lines) start_value = lines;
     if (end_value < start_value) end_value = start_value;
     if (end_value > lines) end_value = lines;
+    filename = document.getElementById("name-box").value;
+    if (!Object.keys(EXTENSIONS).includes(document.getElementById("lang-select").value))
+        document.getElementById("lang-select").value = "txt";
+    language = document.getElementById("lang-select").value;
     preview();
 }
 
@@ -142,9 +148,9 @@ document.getElementById("input-upload").addEventListener("input", () => {
         let reader = new FileReader();
         reader.addEventListener("load", () => {
             let spl = file.name.split(".");
-            language = spl[spl.length - 1];
             code_text = reader.result;
-            filename = file.name;
+            document.getElementById("name-box").value = file.name;
+            document.getElementById("lang-select").value = spl[spl.length - 1];
             start.value = 1;
             end.value = code_text.split("\n").length;
             update_boxes();
@@ -163,6 +169,9 @@ document.getElementById("size-slider").addEventListener("input", () => {
 
 start.addEventListener("input", update_boxes);
 end.addEventListener("input", update_boxes);
+
+document.getElementById("name-box").addEventListener("input", update_boxes);
+document.getElementById("lang-select").addEventListener("input", update_boxes);
 
 document.getElementById("download").addEventListener("click", () => download_next_page(1));
 
