@@ -3,6 +3,7 @@
 }
 
 table {
+    width: auto !important;
     border: 1px solid;
     td, th {
         text-align: left;
