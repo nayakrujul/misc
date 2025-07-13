@@ -24,7 +24,8 @@ const pages = [
     ["A Level Boundaries", "See all past grade boundaries for A Level exams", "20250502"],
     ["Highlight", "Convert your code to syntax-highlighted images", "20250525"],
     ["Time", "Check the time in any time zone on one page", "20250602"],
-    ["Number Rush", "Test your mental maths skills against the clock", "20250703"]
+    ["Number Rush", "Test your mental maths skills against the clock", "20250703"],
+    ["Calendar Puzzle", "Find the solutions to the Calendar Puzzle online", "20250713"],
 ];
 
 function add_row(r) {
