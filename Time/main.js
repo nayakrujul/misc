@@ -68,6 +68,7 @@ function add_tz() {
         </div>
     `;
     document.body.insertBefore(td, document.getElementById("margin"));
+    td.querySelector("h1.time").addEventListener("click", time_click);
     document.getElementById(`x${others.length}`).addEventListener("click", remove_tz);
     document.getElementById("tz-input").value = "";
     document.getElementById("submit-tz").disabled = true;
@@ -82,6 +83,11 @@ function remove_tz({target}) {
     update_times();
 }
 
+function time_click({target}) {
+    target.parentElement.classList.toggle("fullscreen");
+    document.getElementById("search-div").classList.toggle("hidden");
+}
+
 let curr = -new Date().getTimezoneOffset();
 document.getElementById("local-tz").innerHTML = convert_offset(curr);
 
@@ -90,9 +96,11 @@ let others = [];
 update_times();
 setInterval(update_times, 200);
 
+document.querySelector("h1.time").addEventListener("click", time_click);
+
 document.getElementById("tz-input").addEventListener("input", ({target}) => {
     document.getElementById("submit-tz").disabled = !validate_tz(target.value);
-})
+});
 
 document.getElementById("submit-tz").addEventListener("click", add_tz);
 document.getElementById("tz-input").addEventListener("keyup", ({key}) => key == "Enter" ? add_tz() : null);
