@@ -24,7 +24,7 @@ ul#autocomplete {
     z-index: 1000;
     font-size: 16px;
     left: 112px;
-    top: 162px;
+    top: 170px;
     list-style-type: none;
     padding-inline-start: 5px;
     font-size: 16px;
@@ -48,7 +48,16 @@ table#results {
     }
 }
 
-div#wrapper {
-    overflow: auto;
+div.wrapper {
     white-space: nowrap;
+}
+
+@media (max-width: 450px) {
+    h1#heading {
+        font-size: 1.5em;
+    }
+
+    ul#autocomplete {
+        top: 140px;
+    }
 }

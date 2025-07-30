@@ -13,9 +13,7 @@ h1, h2 {
     scroll-margin-top: 20px;
 }
 
-.wrapper {
-    display: block;
-    overflow-x: auto;
+div.wrapper {
     white-space: nowrap;
     margin: 10px 0;
 }
