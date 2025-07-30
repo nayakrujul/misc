@@ -15,7 +15,7 @@ input#subject {
 
 ul#autocomplete {
     position: absolute;
-    width: calc(100% - 125px);
+    width: calc(100% - 152px);
     border: 1px solid #ccc;
     border-top: none;
     max-height: 200px;
@@ -23,8 +23,8 @@ ul#autocomplete {
     background: white;
     z-index: 1000;
     font-size: 16px;
-    left: 99px;
-    top: 145px;
+    left: 112px;
+    top: 162px;
     list-style-type: none;
     padding-inline-start: 5px;
     font-size: 16px;
@@ -41,14 +41,8 @@ ul#autocomplete {
 
 table#results {
     margin-top: 20px;
-    border: 2px solid black;
-    width: 100%;
 
-    tr:hover {
-        background-color: rgba(173, 216, 230, 0.5);
-    }
-
-    td:hover, th:hover {
+    td:hover {
         font-weight: bold;
         background-color: lightblue;
     }

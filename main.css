@@ -1,5 +1,18 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #fafafa;
+    padding: 20px;
+    margin: 0;
+    color: #333333;
+    text-align: center;
+}
+
+h1#heading {
+    font-size: 2.5em;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.3em;
+    margin-bottom: 20px;
+    display: inline-block;
 }
 
 a {
@@ -11,16 +24,37 @@ li {
     padding-bottom: 20px;
 }
 
-table:not(.exempt) {
-    border: 1px solid black;
+table {
     width: 100%;
-    box-sizing: border-box;
+}
 
-    th, td {
-        text-align: left;
-        border: 1px solid black;
-        padding: 10px;
-    }
+table:not(#pages-table) {
+    max-width: 750px;
+    margin: auto;
+}
+
+#pages-table th:nth-child(1) {
+  width: 20%;
+}
+#pages-table th:nth-child(2) {
+  width: 60%;
+}
+#pages-table th:nth-child(3) {
+  width: 20%;
+}
+
+table, th, td {
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+    padding: 8px 12px;
+}
+
+th {
+    background-color: #66cfff;
+}
+
+tr:hover {
+    background-color: #e1f0ff;
 }
 
 div#bottom {
@@ -29,7 +63,7 @@ div#bottom {
     padding: 10px;
     bottom: 0px;
     left: 0px;
-    background-color: white;
+    background-color: #fafafa;
 }
 
 input#search-bar {

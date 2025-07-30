@@ -44,7 +44,7 @@ div.time-div {
             font-size: 18px;
             font-weight: 800;
             border-radius: 10px;
-            background-color: white;
+            background-color: #fafafa;
             transition: background-color 250ms;
         }
 
@@ -68,7 +68,7 @@ div.time-div.fullscreen {
     height: 100%;
     padding: 0px;
     margin: 0px;
-    background-color: white;
+    background-color: #fafafa;
 
     div.right {
         display: none;
@@ -92,7 +92,7 @@ div#search-div {
     width: calc(100% - 56px);
     position: fixed;
     bottom: 25px;
-    background-color: white;
+    background-color: #fafafa;
     z-index: 999;
 
     input#tz-input {

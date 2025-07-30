@@ -1,15 +1,44 @@
 input#inputbox {
-    width: calc(100% - 6px);
+    width: calc(100% - 40px);
     font-family: monospace;
     font-size: 2em;
-    overflow-y: hidden;
+    padding: 10px;
+    margin: 20px 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+input#peekbtn {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 10px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input#peekbtn:hover {
+    background-color: #005fa3;
 }
 
 p#colours {
     font-family: monospace;
     overflow-wrap: anywhere;
     font-size: 2em;
-    padding: 3px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+p#output {
+    font-size: 1.2em;
+    color: #666;
+    margin-top: 10px;
 }
 
 .green {

@@ -28,7 +28,7 @@ function random_permutation(n) {
 }
 
 function draw_array_state(state) {
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#fafafa";
     ctx.fillRect(0, 0, cnv.width, cnv.height);
     let len = state.arr.length;
     let xsc = cnv.width / len;

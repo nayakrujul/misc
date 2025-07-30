@@ -123,6 +123,7 @@ div#content {
                 width: 100%;
                 padding: 10px;
                 box-sizing: border-box;
+                text-align: left;
                 
                 span.guess-word {
                     font-size: 28px;
@@ -149,6 +150,7 @@ div#content {
                 width: 100%;
                 padding: 10px;
                 box-sizing: border-box;
+                text-align: left;
                 
                 span.answer-word {
                     font-size: 20px;

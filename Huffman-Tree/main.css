@@ -1,28 +1,23 @@
-h1#heading {
-    padding-bottom: 10px;
-}
-
 input#inputbox {
-    width: 500px;
-    max-width: calc(100% - 5px);
-    font-size: 20px;
+    width: 100%;
+    max-width: 600px;
+    font-size: 1.2em;
+    padding: 10px;
     margin-top: 10px;
     margin-bottom: 20px;
-}
-
-table, th, td {
-    border: 1px solid black;
-}
-
-th, td {
-    padding: 5px;
-    text-align: left;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: monospace;
 }
 
 .char {
     color: #e47d00;
+    font-weight: bold;
 }
 
 .code {
     color: lightseagreen;
+    font-family: monospace;
+    font-weight: 600;
 }

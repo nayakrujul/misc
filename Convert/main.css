@@ -1,11 +1,28 @@
-h1#heading {
-    padding-bottom: 10px;
+select, input, span#text1, span#text2, span#units-list, span#equals, span#result {
+    font-size: 1.5em;
+    margin: 0 8px;
+    vertical-align: middle;
 }
 
-select, input, span#units-list, span#equals, span#result {
-    font-size: 24px;
+span {
+    display: inline-block;
+}
+
+input {
+    padding: 8px 12px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    max-width: 40vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+select {
+    padding: 10px;
 }
 
 span#result {
-    color: red;
+    color: #d6336c;
+    font-weight: 600;
 }

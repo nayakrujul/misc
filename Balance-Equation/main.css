@@ -1,3 +1,47 @@
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+code {
+    background-color: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+input[type="text"] {
+    width: 33%;
+    max-width: 200px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2em;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+}
+
+input#balance-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input#balance-btn:hover {
+    background-color: #005fa3;
+}
+
+#out-text {
+    font-size: 1.4em;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
 .highlight {
     color: red;
 }

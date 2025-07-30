@@ -1,5 +1,7 @@
 h2 {
-    margin-top: 50px;
+    margin-top: 40px;
+    font-size: 1.6em;
+    color: #444;
 }
 
 img.poster {
@@ -8,26 +10,34 @@ img.poster {
     height: 200px;
     max-width: 100%;
     cursor: zoom-in;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 a {
-    display: block;
-    color: inherit;
-    border-radius: 10px;
-    border: 2px solid;
-    width: fit-content;
-    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    color: #007acc;
+    border-radius: 8px;
+    border: 1px solid #007acc;
+    padding: 8px 12px;
     text-decoration: none;
     font-style: normal;
-    background-color: #eeeeee;
+    background-color: #f0f8ff;
+    margin: 5px;
+    transition: background-color 0.2s ease-in-out;
 
     * {
-        vertical-align: middle;
+        padding: 0px 3px;
     }
+}
 
-    img.download {
-        content: url("./assets/download.svg");
-        height: 18px;
-        padding-right: 5px;
-    }
+a:hover {
+    background-color: #e6f2ff;
+}
+
+img.download {
+    content: url("./assets/download.svg");
+    height: 18px;
+    padding-right: 5px;
 }

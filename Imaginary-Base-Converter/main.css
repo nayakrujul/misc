@@ -1,3 +1,20 @@
+p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 10px auto;
+    color: #555;
+}
+
+input[type="number"] {
+    font-size: 1.2em;
+    padding: 8px 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 80px;
+    margin: 5px;
+}
+
 span#output {
-    color: red;
+    color: #d6336c;
+    font-weight: bold;
 }
