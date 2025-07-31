@@ -1,28 +1,120 @@
-h1.countdown-timer {
-    margin-top: min(10vh, 50px);
-    margin-bottom: min(10vh, 50px);
+div#subjects {
+    font-size: 20px;
 }
 
-h1.countdown-timer span.timer {
-    font-family: monospace;
-    font-size: 3rem;
+select {
+    padding: 10px;
+    margin-left: 10px;
+    border: 2px solid #dddddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+    transition: background-color 200ms ease, border-color 200ms ease;
 }
 
-h1.countdown-timer span.text {
-    font-size: 1.5rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    vertical-align: text-top;
+select:hover {
+    background-color: #eaeaea;
+    border-color: #333333;
 }
 
-label {
+#subsel {
+    font-size: 20px;
+    width: 60px;
+}
+
+span.subject {
+    position: relative;
     display: inline-block;
+    padding: 10px;
+    padding-right: 15px;
+    margin: 5px 10px;
+    border: 2px solid #333333;
+    border-radius: 5px;
+    user-select: none;
 }
 
-@media (max-width: 800px) {
-    h1.countdown-timer span.timer {
+span.remove {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    color: red;
+    background-color: #fafafa;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 11px;
+    border: 2px solid #333333;
+    cursor: pointer;
+}
+
+div.exam {
+    padding: 20px;
+    width: 500px;
+    max-width: calc(95% - 40px);
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+
+    h2.name {
+        margin-top: 0px;
         font-size: 2rem;
     }
-    h1.countdown-timer span.text {
-        font-size: 1rem;
+
+    h1.countdown {
+        font-family: "Monaco", monospace;
+        user-select: none;
+        margin-bottom: 0px;
     }
+}
+
+div#margin {
+    width: 100%;
+    height: 50px;
+}
+
+.maths {
+    background-color: #a5ebff;
+}
+
+.further-maths {
+    background-color: #b1dcff;
+}
+
+.physics {
+    background-color: #ffcccc;
+}
+
+.chemistry {
+    background-color: #fff9cc;
+}
+
+.biology {
+    background-color: #b2d8b2;
+}
+
+.computer-science {
+    background-color: #ffe0cc;
+}
+
+.economics {
+    background-color: #d9f2d9;
+}
+
+.geography {
+    background-color: #cceacc;
+}
+
+.philosophy {
+    background-color: #f2e0ff;
+}
+
+.french {
+    background-color: #92ccff;
+}
+
+.spanish {
+    background-color: #ffb4b4;
+}
+
+.german {
+    background-color: #fff296;
 }

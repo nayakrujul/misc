@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="stylesheet" href="./main.css">
+
+        <title>Exam Countdown</title>
+
+        <link rel="icon" type="image/png" href="https://rujulnayak.com/logos/icon-black.png"/>
+        <meta property="og:image" content="https://rujulnayak.com/logos/colour.png" />
+        <meta property="og:image:width" content="2000" />
+        <meta property="og:image:height" content="1500" />
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="How long until the exams?">
+    </head>
+
+    <body>
+
+        <h1 id="heading">Exam Countdown</h1>
+
+        <h1 class="countdown-timer" name="Start-of-Exams" countdown-to="12 May 2025 08:30:00 GMT+1">&nbsp;</h1>
+        <h1 class="countdown-timer" name="End-of-Exams" countdown-to="16 Jun 2025 10:30:00 GMT+1">&nbsp;</h1>
+        <h1 class="countdown-timer" name="Results-Day" countdown-to="21 Aug 2025 09:00:00 GMT+1">&nbsp;</h1>
+
+        <br /> <br />
+
+        <p>
+            <b>First exam:</b>
+            <label style="display: inline-block;">
+                <label>
+                    <input type="radio" value="drama" class="radio-btn" />
+                    Drama (08/05)
+                </label>
+                <label>
+                    <input type="radio" value="latin" class="radio-btn" />
+                    Latin (09/05)
+                </label>
+                <label>
+                    <input type="radio" value="english" class="radio-btn" checked />
+                    English Lit (12/05)
+                </label>
+            </label>
+        </p>
+
+        <p>
+            <b>Last exam:</b>
+            <label style="display: inline-block;">
+                <label>
+                    <input type="radio" value="physics" class="radio-btn" checked />
+                    Physics (16/06)
+                </label>
+                <label>
+                    <input type="radio" value="spanish" class="radio-btn" />
+                    Spanish (17/06)
+                </label>
+            </label>
+        </p>
+
+        <script src="./main.js"></script>
+
+        <div id="bottom">
+            &copy; Rujul Nayak 2024
+        </div>
+
+    </body>
+</html>

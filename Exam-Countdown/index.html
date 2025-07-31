@@ -22,49 +22,36 @@
 
         <h1 id="heading">Exam Countdown</h1>
 
-        <h1 class="countdown-timer" name="Start-of-Exams" countdown-to="12 May 2025 08:30:00 GMT+1">&nbsp;</h1>
-        <h1 class="countdown-timer" name="End-of-Exams" countdown-to="16 Jun 2025 10:30:00 GMT+1">&nbsp;</h1>
-        <h1 class="countdown-timer" name="Results-Day" countdown-to="21 Aug 2025 09:00:00 GMT+1">&nbsp;</h1>
+        <p>For the 2026 A Level exams</p>
 
-        <br /> <br />
+        <br />
 
-        <p>
-            <b>First exam:</b>
-            <label style="display: inline-block;">
-                <label>
-                    <input type="radio" value="drama" class="radio-btn" />
-                    Drama (08/05)
-                </label>
-                <label>
-                    <input type="radio" value="latin" class="radio-btn" />
-                    Latin (09/05)
-                </label>
-                <label>
-                    <input type="radio" value="english" class="radio-btn" checked />
-                    English Lit (12/05)
-                </label>
-            </label>
-        </p>
+        <div id="subjects">
+            <span>Subjects:</span>
+            <select id="subsel">
+                <option value="" disabled selected>+</option>
+            </select>
+        </div>
 
-        <p>
-            <b>Last exam:</b>
-            <label style="display: inline-block;">
-                <label>
-                    <input type="radio" value="physics" class="radio-btn" checked />
-                    Physics (16/06)
-                </label>
-                <label>
-                    <input type="radio" value="spanish" class="radio-btn" />
-                    Spanish (17/06)
-                </label>
-            </label>
-        </p>
+        <br />
+
+        <div id="fm-div" hidden>
+            <label for="fm-sel">Choose options for Further Maths</label>:
+            <select id="fm-sel">
+                <option value="ADP">Add. Pure & Discrete</option>
+                <option value="AMP">Add. Pure & Mechanics</option>
+                <option value="ASP">Add. Pure & Statistics</option>
+                <option value="DMP">Discrete & Mechanics</option>
+                <option value="DSP">Discrete & Statistics</option>
+                <option value="MSP">Mechanics & Statistics</option>
+            </select>
+        </div>
+
+        <div id="margin"></div>
+
+        <div id="bottom">&copy; Rujul Nayak 2025</div>
 
         <script src="./main.js"></script>
-
-        <div id="bottom">
-            &copy; Rujul Nayak 2024
-        </div>
 
     </body>
 </html>
