@@ -1,5 +1,5 @@
 input#inputbox {
-    width: 100%;
+    width: calc(100% - 20px);
     max-width: 600px;
     font-size: 1.2em;
     padding: 10px;
