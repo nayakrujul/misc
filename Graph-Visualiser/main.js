@@ -118,18 +118,24 @@ function clamp_positions() {
     });
 }
 
-function disable_dropdowns() {
+function fix_dropdowns() {
     Array.from(es.rows).slice(1).forEach(row => {
         let s1 = row.cells[0].querySelector("select.dropdown");
         let s2 = row.cells[1].querySelector("select.dropdown");
-        Array.from(s1.options).forEach(o1 => o1.disabled = o1.value === s2.value);
-        Array.from(s2.options).forEach(o2 => o2.disabled = o2.value === s1.value);
+        Array.from(s1.options).forEach((o1, i1) => {
+            o1.disabled = o1.value === s2.value;
+            o1.innerHTML = `#${i1 + 1} (${ns.rows[i1 + 1].cells[1].querySelector("input.text").value})`;
+        });
+        Array.from(s2.options).forEach((o2, i2) => {
+            o2.disabled = o2.value === s1.value;
+            o2.innerHTML = `#${i2 + 1} (${ns.rows[i2 + 1].cells[1].querySelector("input.text").value})`;
+        });
     });
 }
 
 function input() {
     clamp_positions();
-    disable_dropdowns();
+    fix_dropdowns();
     clear();
     draw_nodes();
     draw_edges();
