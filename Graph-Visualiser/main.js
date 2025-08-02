@@ -8,6 +8,7 @@ const es = document.getElementById("edges");
 
 const dir = document.getElementById("directed");
 const add = document.getElementById("add-node");
+const spe = document.getElementById("spacing");
 
 const rad = 100;
 
@@ -39,6 +40,18 @@ function closest_point(cx, cy, px, py) {
     if (dist === 0) return [cx + rad, cy];
     let sc = rad / dist;
     return [cx + dx * sc, cy + dy * sc]
+}
+
+function spaced_points(n, r) {
+    let points = [];
+    let step = (2 * Math.PI) / n;
+    for (let i = 0; i < n; i++) {
+        let angle = - Math.PI / 2 - step / 2 + i * step;
+        let x = r * Math.cos(angle);
+        let y = r * Math.sin(angle);
+        points.push([Math.round(x), Math.round(y)]);
+    }
+    return points;
 }
 
 function clear() {
@@ -244,6 +257,18 @@ function add_node() {
     input();
 }
 
+function space_evenly() {
+    let rows = Array.from(ns.rows).slice(1);
+    let ps = spaced_points(rows.length, 500 * Math.sqrt(2));
+    for (let i = 0; i < ps.length; i++) {
+        let [px, py] = ps[i];
+        let [xi, yi] = [...rows[i].cells[2].querySelectorAll("input.num")]
+        xi.value = px;
+        yi.value = py;
+    }
+    input();
+}
+
 function mousedown({offsetX, offsetY}) {
     let [ox, oy] = scale(offsetX, offsetY);
     let arr = Array.from(ns.rows).slice(1);
@@ -311,6 +336,7 @@ graph.addEventListener("mouseleave", mouseup);
 
 dir.addEventListener("input", input);
 add.addEventListener("click", add_node);
+spe.addEventListener("click", space_evenly);
 
 add_edge(0, 1);
 add_edge(0, 2);

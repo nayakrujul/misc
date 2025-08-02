@@ -62,16 +62,16 @@ div#content {
                 color: red;
             }
 
-            span.remove:hover {
+            span.remove:hover, span.swap:hover {
                 background-color: #eeeeee;
             }
         }
 
-        input#add-node {
+        input.button {
             padding: 10px 20px;
+            margin: 0px 10px;
             font-size: 16px;
             font-family: sans-serif;
-            background-color: #4f46e5;
             color: white;
             border: none;
             border-radius: 8px;
@@ -80,15 +80,30 @@ div#content {
             transition: background-color 0.25s, transform 0.1s, box-shadow 0.25s;
         }
 
-        input#add-node:hover {
-            background-color: #4338ca;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        input.button:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
-        input#add-node:active {
+        input.button:active {
             transform: scale(0.95);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            }
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        input#add-node {
+            background-color: #4f46e5;
+        }
+
+        input#add-node:hover {
+            background-color: #4338ca;
+        }
+
+        input#spacing {
+            background-color: #ff8000;
+        }
+
+        input#spacing:hover {
+            background-color: #ef7000;
+        }
 
         div.toggle-wrapper {
             display: flex;
