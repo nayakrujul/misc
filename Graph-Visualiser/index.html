@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="stylesheet" href="./main.css">
+
+        <title>Graph Visualiser</title>
+
+        <link rel="icon" type="image/png" href="https://rujulnayak.com/logos/icon-black.png"/>
+        <meta property="og:image" content="https://rujulnayak.com/logos/colour.png" />
+        <meta property="og:image:width" content="2000" />
+        <meta property="og:image:height" content="1500" />
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="An interactive mathematical graph diagram creator.">
+    </head>
+
+    <body>
+
+        <h1 id="heading">Graph Visualiser</h1>
+
+        <div id="content">
+            <div id="settings">
+                <h1>Nodes</h1>
+                <table id="nodes">
+                    <tr>
+                        <th>#</th>
+                        <th>Label</th>
+                        <th>Position</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" value="A" class="text" /></td>
+                        <td>(
+                            <input type="number" value="-500" class="num" />,
+                            <input type="number" value="-500" class="num" />
+                        )</td>
+                        <td><span class="remove">&times;</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><input type="text" value="B" class="text" /></td>
+                        <td>(
+                            <input type="number" value="500" class="num" />,
+                            <input type="number" value="-500" class="num" />
+                        )</td>
+                        <td><span class="remove">&times;</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><input type="text" value="C" class="text" /></td>
+                        <td>(
+                            <input type="number" value="-500" class="num" />,
+                            <input type="number" value="500" class="num" />
+                        )</td>
+                        <td><span class="remove">&times;</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><input type="text" value="D" class="text" /></td>
+                        <td>(
+                            <input type="number" value="500" class="num" />,
+                            <input type="number" value="500" class="num" />
+                        )</td>
+                        <td><span class="remove">&times;</span></td>
+                    </tr>
+                </table>
+                <input type="button" id="add-node" value="Add node" />
+                <br /> <br />
+                <h1>Edges</h1>
+                <div class="toggle-wrapper">
+                    <span>Directed?</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="directed">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <table id="edges">
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </table>
+            </div>
+            <div id="graph-wrapper">
+                <canvas id="canvas" width="2000" height="2000">
+
+                </canvas>
+            </div>
+        </div>
+
+        <p id="small-screen">Please view this page on a bigger screen.</p>
+
+        <div id="bottom">&copy; Rujul Nayak 2025</div>
+
+        <script src="./main.js"></script>
+
+    </body>
+</html>

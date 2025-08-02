@@ -26,6 +26,7 @@ const pages = [
     ["Time", "Check the time in any time zone on one page", "20250602"],
     ["Number Rush", "Test your mental maths skills against the clock", "20250703"],
     ["Calendar Puzzle", "Find the solutions to the Calendar Puzzle online", "20250713"],
+    ["Graph Visualiser", "An interactive mathematical graph diagram creator", "20250802"],
 ];
 
 function add_row(r) {
