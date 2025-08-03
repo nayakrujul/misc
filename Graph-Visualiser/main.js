@@ -9,6 +9,8 @@ const es = document.getElementById("edges");
 const dir = document.getElementById("directed");
 const add = document.getElementById("add-node");
 const spe = document.getElementById("spacing");
+const con = document.getElementById("connect");
+const ral = document.getElementById("rem-all");
 
 const rad = 100;
 
@@ -52,6 +54,24 @@ function spaced_points(n, r) {
         points.push([Math.round(x), Math.round(y)]);
     }
     return points;
+}
+
+function eq(a, b) {
+    if (Array.isArray(a)) {
+        if (Array.isArray(b)) {
+            if (a.length !== b.length) return false;
+            for (let i = 0; i < a.length; i++)
+                if (!eq(a[i], b[i])) return false;
+            return true
+        } else return false;
+    } else if (Array.isArray(b)) return false;
+    else return a === b;
+}
+
+function contains(arr, item) {
+    for (let i = 0; i < arr.length; i++)
+        if (eq(arr[i], item)) return true;
+    return false;
 }
 
 function clear() {
@@ -191,6 +211,10 @@ function remove2({target}) {
     input();
 }
 
+function remove3() {
+    [...es.querySelectorAll("span.remove")].forEach(el => el.click());
+}
+
 function swap({target}) {
     let row = target.parentElement.parentElement;
     let s1 = row.cells[0].querySelector("select.dropdown");
@@ -269,6 +293,29 @@ function space_evenly() {
     input();
 }
 
+function fully_connect() {
+    let edges = Array.from(es.rows).slice(1).map(r => [
+        +r.cells[0].querySelector("select.dropdown").value,
+        +r.cells[1].querySelector("select.dropdown").value
+    ]);
+    for (let i = 0; i < ns.rows.length - 1; i++) {
+        for (let j = 0; j < ns.rows.length - 1; j++) {
+            if (i === j) continue;
+            if (dir.checked) {
+                if (!contains(edges, [i, j])) {
+                    add_edge(i, j);
+                    edges.push([i, j]);
+                }
+            } else {
+                if (!contains(edges, [i, j]) && !contains(edges, [j, i])) {
+                    add_edge(i, j);
+                    edges.push([i, j]);
+                }
+            }
+        }
+    }
+}
+
 function mousedown({offsetX, offsetY}) {
     let [ox, oy] = scale(offsetX, offsetY);
     let arr = Array.from(ns.rows).slice(1);
@@ -337,6 +384,8 @@ graph.addEventListener("mouseleave", mouseup);
 dir.addEventListener("input", input);
 add.addEventListener("click", add_node);
 spe.addEventListener("click", space_evenly);
+con.addEventListener("click", fully_connect);
+ral.addEventListener("click", remove3);
 
 add_edge(0, 1);
 add_edge(0, 2);

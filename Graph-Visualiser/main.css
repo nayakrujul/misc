@@ -105,6 +105,22 @@ div#content {
             background-color: #ef7000;
         }
 
+        input#connect {
+            background-color: #00c080;
+        }
+
+        input#connect:hover {
+            background-color: #00b075;
+        }
+
+        input#rem-all {
+            background-color: #ff3c3c;
+        }
+
+        input#rem-all:hover {
+            background-color: #ef3232;
+        }
+
         div.toggle-wrapper {
             display: flex;
             justify-content: center;
