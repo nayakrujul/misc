@@ -16,6 +16,8 @@ const rad = 100;
 
 let moving = 0;
 let selected = -1;
+let hl = -1;
+let mouse_over = -1;
 
 let centre = [0, 0]
 let new_edge = [0, 0];
@@ -26,8 +28,8 @@ function distance(x1, y1, x2, y2) {
 
 function scale(x, y) {
     let rect = graph.getBoundingClientRect();
-    let newx = x * (width / rect.width);
-    let newy = y * (width / rect.height);
+    let newx = (x + 5) * (width / rect.width);
+    let newy = (y + 5) * (width / rect.height);
     return [Math.round(newx), Math.round(newy)];
 }
 
@@ -79,11 +81,25 @@ function clear() {
     ctx.fillRect(0, 0, width, width);
 }
 
-function draw_node(x, y, label) {
+function draw_node(x, y, label, back) {
+    if (back === 0) {
+        ctx.beginPath();
+        ctx.arc(x, y, rad * 0.8, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(0, 0, 255, 0.5)";
+        ctx.fill();
+    } else if (back === 1) {
+        ctx.beginPath();
+        ctx.arc(x, y, rad * 1.2, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(255, 0, 0, 0.5)";
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(x, y, rad * 0.8, 0, 2 * Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+    }
     ctx.beginPath();
     ctx.arc(x, y, rad, 0, 2 * Math.PI);
     ctx.strokeStyle = 'black';
-    ctx.lineWidth = 5;
     ctx.stroke();
     ctx.fillStyle = 'black';
     ctx.font = '40px monospace';
@@ -119,10 +135,10 @@ function draw_arrow_head(x1, y1, x2, y2) {
 }
 
 function draw_nodes() {
-    Array.from(ns.rows).slice(1).forEach(row => {
+    Array.from(ns.rows).slice(1).forEach((row, i) => {
         let lbl = row.cells[1].querySelector("input.text").value;
         let [xinp, yinp] = [...row.cells[2].querySelectorAll("input.num")];
-        draw_node(+xinp.value + width / 2, +yinp.value + width / 2, lbl);
+        draw_node(+xinp.value + width / 2, +yinp.value + width / 2, lbl, i === mouse_over ? hl : -1);
     });
 }
 
@@ -146,8 +162,8 @@ function draw_new_edge() {
 function clamp_positions() {
     Array.from(ns.rows).slice(1).forEach(row => {
         let [xinp, yinp] = [...row.cells[2].querySelectorAll("input.num")];
-        xinp.value = clamp(+xinp.value);
-        yinp.value = clamp(+yinp.value);
+        xinp.value = Math.round(clamp(+xinp.value));
+        yinp.value = Math.round(clamp(+yinp.value));
     });
 }
 
@@ -316,17 +332,18 @@ function fully_connect() {
     }
 }
 
-function mousedown({offsetX, offsetY}) {
+function mousedown({offsetX, offsetY, button}) {
+    if (button !== 0) return;
     let [ox, oy] = scale(offsetX, offsetY);
     let arr = Array.from(ns.rows).slice(1);
     for (let i = 0; i < arr.length; i++) {
         let [xi, yi] = [...arr[i].cells[2].querySelectorAll("input.num")];
         let dist = distance(+xi.value + width / 2, +yi.value + width / 2, ox, oy);
-        if (dist <= rad * 0.6) {
+        if (dist <= rad * 0.8) {
             selected = i;
             moving = 1;
             break;
-        } else if (dist <= rad * 1.4) {
+        } else if (dist <= rad * 1.2) {
             selected = i;
             moving = 2;
             break;
@@ -335,15 +352,33 @@ function mousedown({offsetX, offsetY}) {
 }
 
 function mousemove({offsetX, offsetY}) {
-    if (moving === 1) {
-        let [ox, oy] = scale(offsetX, offsetY);
+    let [ox, oy] = scale(offsetX, offsetY);
+    if (moving === 0) {
+        let arr = Array.from(ns.rows).slice(1);
+        mouse_over = -1;
+        hl = -1;
+        for (let i = 0; i < arr.length; i++) {
+            let [xi, yi] = [...arr[i].cells[2].querySelectorAll("input.num")];
+            let dist = distance(+xi.value + width / 2, +yi.value + width / 2, ox, oy);
+            console.log(dist);
+            if (dist <= rad * 0.8) {
+                mouse_over = i;
+                hl = 0;
+                break;
+            } else if (dist <= rad * 1.2) {
+                mouse_over = i;
+                hl = 1;
+                break;
+            }
+        }
+        input();
+    } else if (moving === 1) {
         let row = Array.from(ns.rows)[selected + 1];
         let [xi, yi] = [...row.cells[2].querySelectorAll("input.num")];
         xi.value = clamp(ox - width / 2);
         yi.value = clamp(oy - width / 2);
         input();
     } else if (moving === 2) {
-        let [ox, oy] = scale(offsetX, offsetY);
         let row = Array.from(ns.rows)[selected + 1];
         let [xi, yi] = [...row.cells[2].querySelectorAll("input.num")];
         centre = [+xi.value + width / 2, +yi.value + width / 2];
@@ -352,7 +387,8 @@ function mousemove({offsetX, offsetY}) {
     }
 }
 
-function mouseup({offsetX, offsetY}) {
+function mouseup({offsetX, offsetY, button}) {
+    if (button !== 0) return;
     if (moving === 2) {
         let [ox, oy] = scale(offsetX, offsetY);
         let arr = Array.from(ns.rows).slice(1);
@@ -368,6 +404,8 @@ function mouseup({offsetX, offsetY}) {
     }
     selected = -1;
     moving = 0;
+    mouse_over = -1;
+    hl = -1;
     centre = [0, 0];
     new_edge = [0, 0];
     input();
