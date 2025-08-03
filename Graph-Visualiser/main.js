@@ -360,7 +360,6 @@ function mousemove({offsetX, offsetY}) {
         for (let i = 0; i < arr.length; i++) {
             let [xi, yi] = [...arr[i].cells[2].querySelectorAll("input.num")];
             let dist = distance(+xi.value + width / 2, +yi.value + width / 2, ox, oy);
-            console.log(dist);
             if (dist <= rad * 0.8) {
                 mouse_over = i;
                 hl = 0;
