@@ -50,7 +50,7 @@ div.exam {
     padding: 20px;
     width: 500px;
     max-width: calc(95% - 40px);
-    margin: auto;
+    margin: 20px;
     margin-top: 50px;
     border-radius: 20px;
 
@@ -64,6 +64,12 @@ div.exam {
         user-select: none;
         margin-bottom: 0px;
     }
+}
+
+div#countdowns-flex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 div#margin {
@@ -117,4 +123,9 @@ div#margin {
 
 .german {
     background-color: #fff296;
+}
+
+.completed {
+    filter: saturate(25%);
+    color: grey;
 }

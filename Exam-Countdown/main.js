@@ -90,7 +90,7 @@ function add_exams() {
                 0d 00:00:00
             </h1>
         `;
-        document.body.insertBefore(ex, document.getElementById("margin"));
+        document.getElementById("countdowns-flex").appendChild(ex);
     });
     update_countdowns();
 }
@@ -108,7 +108,10 @@ function update_countdowns() {
         total %= 60 * 60;
         let mins = Math.floor(total / 60);
         let secs = total % 60;
-        if (neg) days = "-" + days;
+        if (neg) {
+            days = "-" + days;
+            h1.parentElement.classList.add("completed");
+        }
         h1.innerHTML = `${days}d ${zfill(hrs)}:${zfill(mins)}:${zfill(secs)}`;
     });
 }
