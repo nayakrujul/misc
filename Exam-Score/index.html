@@ -21,17 +21,19 @@
         <h1 id="heading">Exam Score</h1>
         <br />
         <label for="name">Exam name:</label>
-        <input type="text" id="name" name="name" placeholder="e.g. Maths Paper 1" />
+        <input type="text" id="name" name="name" placeholder="e.g. Maths Paper 1" autocomplete="off" />
         <br /> <br />
-        <h3 id="score">0/0 (0.00%)</h3>
-        <table id="table" class="exempt">
-            <tr>
-                <th>Question</th>
-                <th>Marks</th>
-                <th>Maximum</th>
-                <th>Del</th>
-            </tr>
-        </table>
+        <h2 id="score">0/0 (0.00%)</h2>
+        <div class="wrapper">
+            <table id="table">
+                <tr>
+                    <th>Question</th>
+                    <th>Marks</th>
+                    <th>Maximum</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </table>
+        </div>
         <br /> <br />
         <input type="button" id="addq" value="Add question" />
         &nbsp;
@@ -40,14 +42,6 @@
         <input type="button" id="download" value="Download image" />
         <br /> <br />
         <p><i>Your changes are always autosaved on your browser.</i></p>
-        <div id="cookies">
-            <h2>Cookies on this page</h2>
-            <p>
-                We use cookies on this page (https://misc.rujulnayak.com/Exam-Score/) to automatically save your work.
-                We will not use cookies to store any of your personal data.
-            </p>
-            <input type="button" id="okcookie" value="Accept!" />
-        </div>
         <canvas hidden id="canvas" width="1000px" height="1000px"></canvas>
         <a hidden id="click" href="/"></a>
         <br /> <br />

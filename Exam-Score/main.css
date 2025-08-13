@@ -1,12 +1,55 @@
 table#table {
     th {
-        text-align: left;
+        font-size: 1.2em;
     }
 
     td, th {
-        padding-right: 10px;
-        padding-top: 5px;
+        padding: 10px;
     }
+}
+
+input[type=text], input[type=number] {
+    font-size: 18px;
+    padding: 8px;
+}
+
+input[type=button]:not(.del-btn) {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 10px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 200ms;
+}
+
+input[type=button]:active {
+    transform: scale(0.95);
+}
+
+input#addq {
+    background-color: #00c080;
+}
+
+input#addq:hover {
+    background-color: #00b075;
+}
+
+input#clear {
+    background-color: #ff3c3c;
+}
+
+input#clear:hover {
+    background-color: #ef3232;
+}
+
+input#download {
+    background-color: #4f46e5;
+}
+
+input#download:hover {
+    background-color: #4338ca;
 }
 
 .input-box {
@@ -15,25 +58,17 @@ table#table {
 
 .del-btn {
     width: 30px;
-}
-
-div#cookies {
-    position: fixed;
-    bottom: 100px;
-    left: 0;
-    background-color: lightgray;
-    padding: 10px;
-    width: 100%;
-}
-
-div#cookies * {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-div#cookies input#okcookie {
-    background-color: rgb(0, 112, 60);
-    color: white;
+    height: 30px;
     font-size: 20px;
-    padding: 5px;
+    color: red;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 200ms;
+}
+
+.del-btn:hover {
+    background-color: #eeeeee;
 }

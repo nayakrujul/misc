@@ -1,6 +1,4 @@
 const dlb = document.getElementById("download");
-const okc = document.getElementById("okcookie");
-const cks = document.getElementById("cookies");
 const cnv = document.getElementById("canvas");
 const tbl = document.getElementById("table");
 const scr = document.getElementById("score");
@@ -38,7 +36,7 @@ function add_row(l=undefined, dosave=true) {
     let dt = document.createElement("td");
     let btn = document.createElement("input");
     btn.type = "button";
-    btn.value = "-";
+    btn.value = "×";
     btn.onclick = () => delete_row(btn);
     btn.classList.add("del-btn");
     dt.appendChild(btn);
@@ -63,22 +61,6 @@ function calculate_score() {
     save();
 }
 
-function remove_banner() {
-    cks.hidden = true;
-    document.cookie = "cookiesAllowed=1;domain=misc.rujulnayak.com;max-age=31536000";
-}
-
-function get_cookies() {
-    let str = document.cookie.split(";");
-    let d = {};
-    for (i = 0; i < str.length; i++) {
-        if (str[i] === "") continue;
-        let c = str[i].split("=");
-        d[c[0].trim()] = c[1].trim();
-    }
-    return d;
-}
-
 function save() {
     let rows = [...tbl.rows];
     rows.shift();
@@ -87,14 +69,13 @@ function save() {
         let [nm, mks, max, _] = [...r.children].map(x => x.firstChild.value);
         output.push([encodeURIComponent(nm), mks, max].join(","));
     });
-    document.cookie = `examScoreData=${output.join("||")};domain=misc.rujulnayak.com;max-age=31536000`;
-    console.log("AUTOSAVED:", output.join("||"));
+    localStorage.setItem(`exam-score.data`, output.join("||"));
+    localStorage.setItem(`exam-score.name`, encodeURIComponent(nam.value));
 }
 
 function load(string, pname) {
     let lst = string.split("||");
     for (i = 0; i < lst.length; i++) {
-        console.log(lst[i]);
         let [a, b, c] = lst[i].split(",");
         add_row([decodeURIComponent(a), b, c], false);
     }
@@ -141,27 +122,14 @@ function createImage() {
     clk.click();
 }
 
-function update_name() {
-    document.cookie = `examScoreName=${encodeURIComponent(nam.value)};domain=misc.rujulnayak.com;max-age=31536000`;
-}
-
-nam.addEventListener("input", () => update_name());
-
+nam.addEventListener("input", () => localStorage.setItem(`exam-score.name`, encodeURIComponent(nam.value)));
 btn.addEventListener("click", () => add_row());
-
-okc.addEventListener("click", remove_banner);
-
 clr.addEventListener("click", clear_table);
-
 dlb.addEventListener("click", createImage);
 
-if (get_cookies()["cookiesAllowed"]) remove_banner();
-
-if (esd = get_cookies()["examScoreData"]) {
-    load(esd, decodeURIComponent(get_cookies()["examScoreName"] || ""));
-} else {
-    add_row();
-}
+if (data = localStorage.getItem("exam-score.data"))
+    load(data, decodeURIComponent(localStorage.getItem("exam-score.name") || ""));
+else add_row();
 
 document.addEventListener('keydown', e => {
     if ((e.ctrlKey || e.metaKey)) {
