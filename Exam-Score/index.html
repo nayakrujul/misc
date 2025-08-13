@@ -39,11 +39,14 @@
         &nbsp;
         <input type="button" id="clear" value="Clear all" />
         &nbsp;
-        <input type="button" id="download" value="Download image" />
+        <input type="button" id="view" value="Preview image" />
+        <br /> <br />
+        <canvas hidden id="canvas" width="1000px" height="1000px"></canvas>
+        <br />
+        <input hidden type="button" id="download" value="Download" />
+        <a hidden id="click" href="/"></a>
         <br /> <br />
         <p><i>Your changes are always autosaved on your browser.</i></p>
-        <canvas hidden id="canvas" width="1000px" height="1000px"></canvas>
-        <a hidden id="click" href="/"></a>
         <br /> <br />
         <div id="bottom">
             &copy; Rujul Nayak 2024

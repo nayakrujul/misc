@@ -1,4 +1,4 @@
-const dlb = document.getElementById("download");
+const pvw = document.getElementById("view");
 const cnv = document.getElementById("canvas");
 const tbl = document.getElementById("table");
 const scr = document.getElementById("score");
@@ -6,6 +6,10 @@ const clr = document.getElementById("clear");
 const clk = document.getElementById("click");
 const btn = document.getElementById("addq");
 const nam = document.getElementById("name");
+const dld = document.getElementById("download")
+
+const colours = ["#ffcccc", "#ffe0cc", "#fff296", "#b2d8b2", "#92ccff", "#f2e0ff"];
+const fonts = ["Trebuchet MS", "sans-serif", "serif", "cursive", "fantasy", "monospace"]
 
 function delete_row(element) {
     element.parentElement.parentElement.remove();
@@ -71,6 +75,7 @@ function save() {
     });
     localStorage.setItem(`exam-score.data`, output.join("||"));
     localStorage.setItem(`exam-score.name`, encodeURIComponent(nam.value));
+    if (!cnv.hidden) create_image();
 }
 
 function load(string, pname) {
@@ -92,24 +97,28 @@ function clear_table() {
     calculate_score();
 }
 
-function createImage() {
+function create_image() {
+    let font_face = fonts[sel_font];
     const ctx = cnv.getContext('2d');
     ctx.textAlign = "center";
-    ctx.fillStyle = "turquoise";
+    ctx.fillStyle = colours[sel_clr];
     ctx.fillRect(0, 0, cnv.width, cnv.height);
-    ctx.font = "60px Arial";
+    ctx.font = "60px " + font_face;
     ctx.fillStyle = "black";
     ctx.fillText(nam.value || "Exam Score", cnv.width / 2, 100);
-    ctx.font = "50px Arial";
-    ctx.fillStyle = "beige";
-    ctx.fillText("rujulnayak.com", cnv.width / 2, cnv.height - 50);
+    ctx.font = "40px " + font_face;
+    ctx.fillStyle = "#888888";
+    ctx.fillText("misc.rujulnayak.com/exam-score", cnv.width / 2, cnv.height - 40);
     let [text1, text2] = scr.innerHTML.split(" ");
-    ctx.fillStyle = "blue";
-    ctx.font = "200px Arial";
+    ctx.fillStyle = "#004080";
+    ctx.font = "200px " + font_face;
     ctx.fillText(text1, cnv.width / 2, cnv.height / 2 - 50);
-    ctx.fillStyle = "green";
-    ctx.font = "150px Arial";
+    ctx.fillStyle = "#008000";
+    ctx.font = "150px " + font_face;
     ctx.fillText(text2, cnv.width / 2, cnv.height / 2 + 200);
+}
+
+function download_image() {
     let data = cnv.toDataURL('image/png');
     clk.href = data;
     clk.download = `exam-score-${
@@ -122,10 +131,44 @@ function createImage() {
     clk.click();
 }
 
-nam.addEventListener("input", () => localStorage.setItem(`exam-score.name`, encodeURIComponent(nam.value)));
+let sel_clr = 0;
+let clrs = document.createElement("div");
+clrs.id = "colours-div";
+clrs.hidden = true;
+clrs.innerHTML = colours.map((c, i) =>
+    `<span id="clr-${i}" class="colour ${i === 0 ? 'selected': ''}" style="background-color: ${c};"></span>`
+).join(" ");
+document.body.insertBefore(clrs, cnv);
+[...clrs.querySelectorAll("span.colour")].forEach(span => span.addEventListener("click", ({target}) => {
+    document.getElementById("clr-" + sel_clr).classList.remove("selected");
+    sel_clr = +target.id.slice(4);
+    target.classList.add("selected");
+    save();
+}));
+
+let sel_font = 0;
+let fnts = document.createElement("div");
+fnts.id = "fonts-div";
+fnts.hidden = true;
+fnts.innerHTML = fonts.map((f, i) =>
+    `<span id="font-${i}" class="font ${i === 0 ? 'selected': ''}" style="font-family: ${f}">A</span>`
+).join(" ");
+document.body.insertBefore(fnts, cnv);
+[...fnts.querySelectorAll("span.font")].forEach(span => span.addEventListener("click", ({target}) => {
+    document.getElementById("font-" + sel_font).classList.remove("selected");
+    sel_font = +target.id.slice(5);
+    target.classList.add("selected");
+    save();
+}));
+
+nam.addEventListener("input", save);
 btn.addEventListener("click", () => add_row());
 clr.addEventListener("click", clear_table);
-dlb.addEventListener("click", createImage);
+pvw.addEventListener("click", () => {
+    cnv.hidden = dld.hidden = clrs.hidden = fnts.hidden = !cnv.hidden;
+    save();
+});
+dld.addEventListener("click", download_image);
 
 if (data = localStorage.getItem("exam-score.data"))
     load(data, decodeURIComponent(localStorage.getItem("exam-score.name") || ""));

@@ -44,12 +44,20 @@ input#clear:hover {
     background-color: #ef3232;
 }
 
-input#download {
+input#view {
     background-color: #4f46e5;
 }
 
-input#download:hover {
+input#view:hover {
     background-color: #4338ca;
+}
+
+input#download {
+    background-color: #ff8000;
+}
+
+input#download:hover {
+    background-color: #ef7000;
 }
 
 .input-box {
@@ -71,4 +79,44 @@ input#download:hover {
 
 .del-btn:hover {
     background-color: #eeeeee;
+}
+
+canvas#canvas {
+    width: 500px;
+    max-width: 80%;
+    border-radius: 5%;
+    border: 3px solid black;
+    margin: 20px;
+}
+
+div#colours-div, div#fonts-div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    span {
+        display: flex;
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        border: 2px solid black;
+        cursor: pointer;
+        margin: 5px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    span:hover, span.selected {
+        border-width: 3px;
+        width: 28px;
+        height: 28px;
+    }
+
+    span.font.selected {
+        background-color: #f0f0f0;
+    }
+}
+
+div#colours-div[hidden], div#fonts-div[hidden] {
+    display: none;
 }
