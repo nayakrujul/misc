@@ -27,6 +27,7 @@ const pages = [
     ["Number Rush", "Test your mental maths skills against the clock", "20250703"],
     ["Calendar Puzzle", "Find the solutions to the Calendar Puzzle online", "20250713"],
     ["Graph Visualiser", "An interactive mathematical graph diagram creator", "20250802"],
+    ["QR Code Generator", "Generate QR codes with control over version and error correction", "20250914"],
 ];
 
 function add_row(r) {

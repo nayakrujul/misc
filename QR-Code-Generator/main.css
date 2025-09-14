@@ -1,0 +1,166 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.controls {
+    flex: 1 1 420px;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+p#error-tooltip {
+    margin-top: 5px;
+    color: red;
+}
+
+input#data-text.error {
+    border-color: red;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+#error-correction {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ec-option {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border 500ms;
+}
+
+.ec-option.selected {
+    border-color: #333;
+    background: #f0f0f0;
+}
+
+.ec-option:hover {
+    border-color: #004488;
+}
+
+
+#pixel-style {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pixel-option {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border 500ms;
+}
+
+.pixel-option.selected {
+    border-color: #333;
+    background: #f0f0f0;
+}
+
+.shape {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    background: #333;
+}
+
+.square-shape {
+    border-radius: 0;
+}
+
+.circle-shape {
+    border-radius: 50%;
+}
+
+.rounded-shape {
+    border-radius: 33%;
+}
+
+.pixel-option:hover {
+    border-color: #004488;
+}
+
+h4 {
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+
+input, select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: border 500ms, box-shadow 500ms;
+}
+
+select, input#download {
+    width: 100%;
+}
+
+input#data-text {
+    width: calc(100% - 1rem)
+}
+
+input#data-text:hover, select:hover {
+    border-color: #666;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+#download {
+    margin-top: 20px;
+    transition: background-color 500ms, box-shadow 500ms;
+}
+
+#download:not(:disabled):hover {
+    cursor: pointer;
+    background-color: #eef0ff;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+#download:not(:disabled):active {
+    transform: scale(0.98);
+}
+
+#preview {
+    flex: 2 1 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+    max-height: 80vh;
+}
+
+canvas {
+    max-width: calc(100% - 100px);
+    height: auto;
+    padding: 50px;
+}
+
+div#margin {
+    width: 100%;
+    height: 50px;
+}
