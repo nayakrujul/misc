@@ -134,6 +134,9 @@ function sel_handler() {
     }
 }
 
+let storfm = localStorage.getItem("countdown.fm");
+if (storfm !== null) fmsel.value = storfm;
+
 let storsubj = localStorage.getItem("countdown.subjects");
 if (storsubj !== null) {
     storsubj.split(",").forEach(s => {
@@ -141,9 +144,6 @@ if (storsubj !== null) {
         sel_handler();
     });
 }
-
-let storfm = localStorage.getItem("countdown.fm");
-if (storfm !== null) fmsel.value = storfm;
 
 sel.addEventListener("input", sel_handler);
 
