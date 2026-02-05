@@ -3,6 +3,7 @@
 }
 
 h2 {
+    padding-top: 20px;
     margin-bottom: 0px;
     font-size: 1.6em;
     color: #444;
@@ -29,6 +30,12 @@ a {
     border: 2px solid;
     padding: 10px;
     border-radius: 15px;
-    margin: 10px;
+    margin: 10px 5px;
     display: inline-block;
+    transition: filter 500ms;
+}
+
+a:hover {
+    text-decoration: underline;
+    filter: brightness(0.6);
 }
