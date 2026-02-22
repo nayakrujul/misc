@@ -10,7 +10,7 @@ input#inputbox {
     background-color: #fff;
 }
 
-input#checkbtn {
+input#peekbtn {
     padding: 10px 20px;
     font-size: 1em;
     margin-top: 10px;
@@ -19,31 +19,10 @@ input#checkbtn {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 200ms;
 }
 
-input#checkbtn:not(:disabled):hover {
+input#peekbtn:hover {
     background-color: #005fa3;
-}
-
-input#checkbtn:disabled {
-    filter: grayscale(1);
-}
-
-input#restart {
-    padding: 10px 20px;
-    font-size: 1em;
-    margin-top: 10px;
-    background-color: #f58231;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 200ms;
-}
-
-input#restart:hover {
-    background-color: #d46a1f;
 }
 
 p#colours {
