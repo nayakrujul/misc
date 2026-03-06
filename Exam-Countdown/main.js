@@ -1,7 +1,7 @@
 const times = {
     "Biology": {"Biological Processes": "4/6P", "Biological Diversity": "12/6A", "Unified Biology": "16/6A"},
     "Chemistry": {"Physical Chemistry": "2/6A", "Analytical Techniques": "9/6A", "Unified Chemistry": "15/6A"},
-    "Computer Science": {"Programming": "12/5P", "Theory": "17/6A"},
+    "Computer Science": {"Programming": "10/6P", "Theory": "17/6A"},
     "Economics": {"Microeconomics": "11/5A", "Macroeconomics": "18/5P", "Themes in Economics": "4/6A"},
     "French": {"Listening, Reading, Writing": "8/6A", "Writing": "17/6A"},
     "Further Maths": {"Pure Core 1": "14/5P", "Pure Core 2": "21/5P", "Statistics": "5/6P", "Mechanics": "12/6P", "Discrete": "16/6P", "Add. Pure": "19/6P"},
