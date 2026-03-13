@@ -125,6 +125,10 @@ div#margin {
     background-color: #fff296;
 }
 
+.step {
+    background-color: #efefef;
+}
+
 .completed {
     filter: saturate(25%);
     color: grey;

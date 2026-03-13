@@ -35,9 +35,9 @@
 
         <br />
 
-        <div id="fm-div" hidden>
-            <label for="fm-sel">Choose options for Further Maths</label>:
-            <select id="fm-sel">
+        <div id="fm-div-a" hidden>
+            <label for="fm-sel-a">Choose options for Further Maths (OCR A):</label>
+            <select id="fm-sel-a">
                 <option value="ADP">Add. Pure & Discrete</option>
                 <option value="AMP">Add. Pure & Mechanics</option>
                 <option value="ASP">Add. Pure & Statistics</option>
@@ -45,6 +45,17 @@
                 <option value="DSP">Discrete & Statistics</option>
                 <option value="MSP">Mechanics & Statistics</option>
             </select>
+        </div>
+
+        <div id="fm-div-b" hidden>
+            <p>Choose options for Further Maths (OCR B):</p>
+            <input type="checkbox" id="fm-sel-b-p" hidden checked />
+            <input type="checkbox" id="fm-sel-b-m" /> <label for="fm-sel-b-m">Mechanics</label> <br />
+            <input type="checkbox" id="fm-sel-b-s" /> <label for="fm-sel-b-s">Statistics</label> <br />
+            <input type="checkbox" id="fm-sel-b-a" /> <label for="fm-sel-b-a">Modelling with algorithms</label> <br />
+            <input type="checkbox" id="fm-sel-b-n" /> <label for="fm-sel-b-n">Numerical methods</label> <br />
+            <input type="checkbox" id="fm-sel-b-e" /> <label for="fm-sel-b-e">Extra pure</label> <br />
+            <input type="checkbox" id="fm-sel-b-f" /> <label for="fm-sel-b-f">Further pure with tech</label> <br />
         </div>
 
         <div id="countdowns-flex"></div>
