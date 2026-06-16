@@ -44,6 +44,8 @@ const fma = document.getElementById("fm-div-a");
 const fmb = document.getElementById("fm-div-b");
 const fmsela = document.getElementById("fm-sel-a");
 const fmselb = [...fmb.querySelectorAll("input")];
+const amsel = document.getElementById("am-start");
+const pmsel = document.getElementById("pm-start");
 
 let selected = [];
 
@@ -81,7 +83,7 @@ function zfill(s, k=2) {
 }
 
 function add_exams() {
-    [...document.querySelectorAll("div.exam")].forEach(el => el.remove());
+    [...document.querySelectorAll("div.exam:not(.results)")].forEach(el => el.remove());
     let exams = [];
     selected.forEach(subj => {
         if (!Object.keys(times).map(title_case).includes(title_case(subj))) return;
@@ -102,6 +104,7 @@ function add_exams() {
     exams.sort((a, b) =>
         (a[3] * 1000 + a[4] * 10 + a[5]) - (b[3] * 1000 + b[4] * 10 + b[5])
     );
+    let start = [amsel.value, pmsel.value]
     exams.forEach(([i, s, p, m, d, t]) => {
         let ex = document.createElement("div");
         ex.classList.add("exam", s.split('-(')[0].trim());
@@ -112,7 +115,7 @@ function add_exams() {
                 ${format_date(d, m, 2026)}
                 (${t == 0 ? "AM" : "PM"})
             </span>
-            <h1 class="countdown" datetime="2026-${zfill(m)}-${zfill(d)}T${['08', '13'][t]}:30:00">
+            <h1 class="countdown" datetime="2026-${zfill(m)}-${zfill(d)}T${start[t]}:00">
                 0d 00:00:00
             </h1>
         `;
@@ -166,6 +169,12 @@ if (storfm !== null) fmsela.value = storfm;
 let storfmb = localStorage.getItem("countdown.fmb");
 if (storfmb !== null) fmselb.forEach(x => x.checked = storfmb.includes(x.id.slice(-1)));
 
+let storam = localStorage.getItem("countdown.am");
+if (storam !== null) amsel.value = storam;
+
+let storpm = localStorage.getItem("countdown.pm");
+if (storpm !== null) pmsel.value = storpm;
+
 let storsubj = localStorage.getItem("countdown.subjects");
 if (storsubj !== null) {
     storsubj.split(",").forEach(s => {
@@ -184,6 +193,16 @@ fmsela.addEventListener("input", () => {
 fmselb.forEach(inp => inp.addEventListener("input", () => {
     localStorage.setItem("countdown.fmb", fmselb.map(x => x.checked ? x.id.slice(-1) : "").join(""));
     add_exams();
-}))
+}));
+
+amsel.addEventListener("input", () => {
+    localStorage.setItem("countdown.am", amsel.value);
+    add_exams();
+});
+
+pmsel.addEventListener("input", () => {
+    localStorage.setItem("countdown.pm", pmsel.value);
+    add_exams();
+});
 
 setInterval(update_countdowns, 200);

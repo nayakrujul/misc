@@ -58,7 +58,39 @@
             <input type="checkbox" id="fm-sel-b-f" /> <label for="fm-sel-b-f">Further pure with tech</label> <br />
         </div>
 
+        <br /> <br />
+
+        <div id="starts-div">
+            <label>Exam start times: </label>
+            <select id="am-start">
+                <option value="08:30">08:30</option>
+                <option value="08:45">08:45</option>
+                <option value="09:00" selected>09:00</option>
+                <option value="09:15">09:15</option>
+                <option value="09:30">09:30</option>
+            </select>
+            <label style="margin-left: 10px;"> and </label>
+            <select id="pm-start">
+                <option value="13:00">13:00</option>
+                <option value="13:15">13:15</option>
+                <option value="13:30" selected>13:30</option>
+                <option value="13:45">13:45</option>
+                <option value="14:00">14:00</option>
+            </select>
+        </div>
+
         <div id="countdowns-flex"></div>
+
+        <br />
+
+        <div id="results-flex">
+            <div class="exam results">
+                <h2 class="name">Results Day</h2>
+                <span class="time">Thu 13 August (8AM)</span>
+                <h1 class="countdown" datetime="2026-08-13T08:00:00">0d 00:00:00</h1>
+            </div>
+        </div>
+        
 
         <div id="margin"></div>
 
